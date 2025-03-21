@@ -1,0 +1,21 @@
+<ion-content scroll-y="false">
+  <ion-row class="circle_img">
+    <ion-col size="12">
+      <div class="outer-circle">
+        <div class="inner-circle">
+          <div class="icon-wrapper">
+            <ion-img src="assets/images/shopping-bag.png"></ion-img>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="orderPlaced-text ion-text-center">
+    <h1>Order Placed Successfully</h1>
+  </ion-row>
+  <ion-row class="ion-text-center view_btn">
+    <ion-button [routerLink]="['/tabs/tab2']" (click)="close()">
+      View Order Status
+    </ion-button>
+  </ion-row>
+</ion-content>

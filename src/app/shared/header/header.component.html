@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-row class="header-center"  *ngIf="currentRoute.includes('/tabs/tab1')" >
+    <ion-col>
+      <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']"></ion-icon>
+      <h1>{{ 'BestDeal.bestdeal' | translate }}</h1>
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="header"  *ngIf="currentRoute.includes('/bestdeal')">
+    <ion-col>
+      <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']"></ion-icon>
+      <h1>{{ 'BestDeal.bestdeal' | translate }}</h1>
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row class="header" *ngIf="currentRoute.includes('/bestdeal')">
+    <ion-col>
+      <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']"></ion-icon>
+      <h1>Vegetables & Fruits</h1>
+      <ion-icon name="search-outline" [routerLink]="['/search']"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-header>

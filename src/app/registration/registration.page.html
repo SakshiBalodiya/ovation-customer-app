@@ -1,0 +1,65 @@
+<ion-content  fullscreen scroll="true">
+  <div class="div_align_center" >
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-justify-center ion-text-center">
+        <ion-img class="img" src="assets/images/restoji_logo.svg"></ion-img>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <h1>Create New Account</h1>
+      </ion-col>
+    </ion-row>
+    <form class="login-form" method="post"> 
+      <ion-row>
+        <ion-col size="12">
+          <ion-label>Name</ion-label>
+          <div class="input-container">
+            <ion-input name="name" type="text" placeholder="Enter Your Name" class="input" required></ion-input>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>Email</ion-label>
+          <div class="input-container">
+            <ion-input name="email" type="email" placeholder="Enter Your Email" class="input" required></ion-input>
+        </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>Contact Number</ion-label>
+          <div class="input-container">
+            <ion-input name="number" type="tel" maxlength="10" placeholder="Enter Your Contact Number" class="input" required></ion-input>
+        </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>Password</ion-label>
+          <div class="pass-input">      
+            <ion-input name="password"  type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter Password" required></ion-input>
+            <ion-icon [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" (click)="togglePassword()" class="eye-icon">
+          </ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>Confirm Password</ion-label>
+          <div class="pass-input">
+                  
+            <ion-input name="password"  type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter Confirm Password" required>
+            </ion-input>
+            <ion-icon    
+            [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
+            (click)="togglePassword()"
+            class="eye-icon"
+          ></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-button class="btn" [routerLink]="['']">Sign Up</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-row class="ion-text-center signin-text">
+      <ion-col>
+      <span>{{ 'REGISTER.haveaccount' | translate }} <a [routerLink]="['']">{{'LOGIN.login' | translate}}</a></span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+</ion-content>

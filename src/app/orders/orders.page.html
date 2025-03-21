@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-row class="header">
+    <ion-col class="ion-text-center">
+      <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']" class="ion-float-left"></ion-icon>
+      <h1>{{ 'Order.myorder' | translate }}</h1>
+    </ion-col>
+  </ion-row>
+</ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-grid>
+    <!-- <ion-row>
+      <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="setActiveSegment($event)">
+        <ion-segment-button value="previous" class="segment_btn" [ngClass]="{'active-segment': selectedSegment === 'previous'}">
+          <ion-label>Previous</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="upcoming" class="segment_btn" [ngClass]="{'active-segment': selectedSegment === 'upcoming'}">
+          <ion-label>Upcoming</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row> -->
+    <ion-row>
+      <ion-col class="order">
+        <ion-card>
+          <ion-row class="order_details border_bottom justify-content-center align-items-center">
+            <ion-col size="auto" class="order_img">
+              <ion-img src="assets/images/item5.png"></ion-img>
+            </ion-col>
+            <ion-col class="order-info">
+              <h1>#298124311</h1>
+              <p>B-177 Nityanand Nagar</p>
+              <p>10 items</p>
+            </ion-col>
+           
+          <!-- <ion-col>
+            <div class="order_img">
+              <ion-img src="assets/images/item5.png"></ion-img>
+            </div>
+            <ion-label class="order-info">
+              <h1>#298124311</h1>
+              <p>6391 Celina, Del..</p>
+              <p>10 items</p>
+            </ion-label>
+            <div class="order-status pending">
+              <ion-chip>Received</ion-chip>
+            </div>
+          </ion-col> -->
+          </ion-row>
+          <ion-row class="border_bottom order-date">
+            <ion-col class="ion-text-start">
+              <p>10 Apr 2024 at 07:45 PM</p>
+            </ion-col>
+            <ion-col size="auto" class="ion-text-end price">
+             <p>{{ 'Currency.currency' | translate }}22</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="order-status pending ion-text-end">
+              <ion-chip>Received</ion-chip>
+            </ion-col>
+          </ion-row>
+          <!-- <ion-row class="call">
+            <ion-button color="none">Call</ion-button>
+          </ion-row> -->
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="order">
+        <ion-card [routerLink]="['/order-details']">
+          <ion-row class="order_details border_bottom justify-content-center align-items-center">
+            <ion-col size="auto" class="order_img">
+              <ion-img src="assets/images/item5.png"></ion-img>
+            </ion-col>
+            <ion-col class="order-info">
+              <h1>#2981243113423</h1>
+              <p>B-177 Nityanand Nagar</p>
+              <p>10 items</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="border_bottom order-date">
+            <ion-col class="ion-text-start">
+              <p>10 Apr 2024 at 07:45 PM</p>
+            </ion-col>
+            <ion-col size="auto" class="ion-text-end price">
+             <p>{{ 'Currency.currency' | translate }}22</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="order-status complete ion-text-end">
+              <ion-chip>Delivered</ion-chip>
+            </ion-col>
+          </ion-row>
+          <!-- <ion-row class="call">
+            <ion-button color="none">Call</ion-button>
+          </ion-row> -->
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

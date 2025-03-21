@@ -1,0 +1,203 @@
+ ion-header{
+  box-shadow: none;
+  padding: 20px 6px 0px 6px;
+}
+ ion-toolbar {
+  --background: transparent;
+  --border-width: 0px !important;
+}
+ h1{
+    font-size: 18px;
+    margin: 0px;
+    font-weight: 600;
+}
+.header ion-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.8rem;
+
+  ion-icon {
+    font-size: 1.5rem;
+  }
+  ion-img {
+    width: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+ion-searchbar{
+    padding-left: 0px;
+    padding-right: 0px;
+    border-radius: 20px;
+    color: #777979;
+    --box-shadow: none;
+    --background: #F5F6F5
+   
+
+}
+
+::ng-deep ion-searchbar .searchbar-input {
+-webkit-padding-start: 3.4375rem !important;
+padding-inline-end: 3.4375rem;
+padding-top: 0.375rem !important;
+padding-bottom: 0.375rem !important;
+background-position: left 8px center;
+height: auto;
+font-size: 15px;
+font-weight: 400;
+line-height: 30px;
+}
+
+::ng-deep ion-searchbar .searchbar-search-icon.sc-ion-searchbar-ios {
+inset-inline-start: 14px;
+color: #777979;
+}
+ion-grid{
+  padding: 0px 10px 0px 16px
+}
+.recent_search ion-chip{
+    border-radius: 6px !important;
+    --background : #F5F6F5;
+    font-size: 14px;
+    font-family: 'Poppins';
+}
+.best-deal-section {
+    margin-top: 20px;
+  }
+//   .shop_btn{
+//     padding-top: 14px;
+//   }
+  .product-card {
+    width: 100%;
+    max-width: 172px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: left;
+    margin: 0px;
+  }
+  
+  .product-card ion-card-header {
+    position: relative;
+    padding: 0;
+    background: #c6c6c629;
+    margin: 10px;
+    border-radius: 6px;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    margin: 10px auto 10px;
+  }
+  .favorite-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .favorite-icon.active {
+    color: #ff5a5f;
+  }
+  
+  .product-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0 4px;
+    line-height: 1.2;
+    color: #333;
+  }
+  
+  .product-quantity {
+    font-size: 12px;
+    color: #666;
+    // margin-bottom: 10px;
+  }
+  
+  .price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .price_div_trending{
+    display: flex;
+    gap: 8px;
+  }
+  .current-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .old-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #999;
+  }
+  swiper-slide{
+    width: 188px !important;
+    display: flex;
+    justify-content: center;
+  }
+  ion-button {
+    // margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: var(--ion-color-primary);
+    border-radius: 6px;
+    height: 40px;
+  }
+  .mySwiper{
+    margin: 10px 0px;
+      // width: 188px !important;
+    
+    
+  }
+
+  .counter_section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .counter_section .added_btn{
+    margin-top: 0px !important;
+    max-width: 45px;
+    height: 40px;
+    width: 45px;
+    padding: 0px;
+}
+.best_deal_section{
+  padding-bottom: 16px;
+}
+.mb-10{
+  margin-bottom: 10px;
+}
+.search_pro ion-col{
+  display: flex;
+  justify-content: center;
+}
+.px-10 {
+  padding: 0px 10px;
+}
+.mt-10{
+  margin-top: 10px;
+}
+.search_bar{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.price_value{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+
+}

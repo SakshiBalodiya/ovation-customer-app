@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-row class="header">
+    <ion-col class="ion-text-center">
+      <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab4']" class="ion-float-left"></ion-icon>
+      <h1>{{ 'Profile.editprofile' | translate }}</h1>
+    </ion-col>
+  </ion-row>
+</ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <!-- Profile Image -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        <div class="profile-image-container">
+          <img src="assets/images/user_img.jpg" alt="Profile Picture" class="profile-image" />
+          <ion-icon name="create-outline" class="edit-icon"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Name Input -->
+    <ion-row class="topbottom_space">
+      <ion-col size="12">
+        <label class="input-label">Name</label>
+        <div class="input-container">
+         
+          <ion-input type="text" value="Smith Mate" class="custom-input" placeholder="Enter your name"></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Email Input -->
+    <ion-row class="topbottom_space">
+      <ion-col size="12">
+        <label class="input-label">Email Address</label>
+        <div class="input-container">
+          
+          <ion-input type="email" value="smithmate@example.com" class="custom-input" placeholder="Enter your email"></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Mobile Number Input -->
+    <ion-row class="topbottom_space">
+      <ion-col size="12">
+        <label class="input-label">Contact Number</label>
+        <div class="input-container">
+          
+          <ion-input type="tel" value="8902555010" maxlength="10" class="custom-input" placeholder="Enter your contact number"></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Address Input -->
+    <ion-row class="topbottom_space">
+      <ion-col size="12">
+        <label class="input-label">Enter Address</label>
+        <div class="input-container">
+          
+          <ion-textarea type="text" value="8502 Preston Rd. Inglewood, USA" class="custom-input" placeholder="Enter your address"></ion-textarea>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Update Button -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
+        <ion-button color="none">Update</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

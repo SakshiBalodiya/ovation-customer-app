@@ -1,0 +1,204 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="header">
+      <ion-col size="12" class="d-flex align-center space-between">
+        <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']"></ion-icon>
+        <ion-img *ngIf="isSearchActive" src="assets/images/sort.png" (click)="sortBy()"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="search_bar">
+        <ion-searchbar (ionInput)="onSearchInput($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="isSearchActive == false">
+      <ion-row>
+        <ion-col size="12" class="mb-10 px-10">
+          <h1>{{ 'Search.recentsearch' | translate }}</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="recent_search">
+          <ion-chip  *ngFor="let item of ['Good Knight', 'Tata Salt', 'Amul Ghee', 'Oil', 'Sugar']">
+            {{ item }}
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+      <!-- Trending Now Section -->
+      <ion-row>
+        <ion-col size="12" class="mb-10 px-10 mt-10">
+          <h1>{{ 'Search.trendingnow' | translate }}</h1>
+        </ion-col>
+      </ion-row>
+      <swiper-container class="mySwiper" slides-per-view="1.5" style="width: 100%;">
+        <swiper-slide>
+          <ion-row class="best_deal_section">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+                <div class="price-container">
+                  <div class="price_div">
+                    <p class="product-quantity">500 ml</p>
+                  </div>
+                  <div class="price_value">
+                    <p class="current-price">{{ 'Currency.currency' | translate }}12</p>
+                    <p class="old-price">{{ 'Currency.currency' | translate }}14</p>
+                  </div>
+                 
+                </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                </div>
+                
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-row>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-row class="best_deal_section">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+                <div class="price-container">
+                  <div class="price_div">
+                    <p class="product-quantity">500 ml</p>
+                  </div>
+                  <div class="price_value">
+                    <p class="current-price">{{ 'Currency.currency' | translate }}12</p>
+                    <p class="old-price">{{ 'Currency.currency' | translate }}14</p>
+                  </div>
+                </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                </div>
+                
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-row>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+    <div *ngIf="isSearchActive == true">
+      <ion-row><ion-col class="mb-10 px-10"><h1>{{ 'Search.showingresultfor' | translate }} "Atta"</h1></ion-col></ion-row>
+
+        <ion-row class="search_pro">
+          <ion-col size="6">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item3.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Hybrid Tomato (Tamatar)</h3>
+                <div class="price-container">
+                  <div class="price_div">
+                    <p class="product-quantity">500 g</p>
+                  </div>
+                  <div class="price_value">
+                    <p class="current-price">{{ 'Currency.currency' | translate }}12</p>
+                    <p class="old-price">{{ 'Currency.currency' | translate }}14</p>
+                  </div>
+                </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item3.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Hybrid Tomato (Tamatar)</h3>
+                <div class="price-container">
+                  <div class="price_div">
+                    <p class="product-quantity">500 g</p>
+                  </div>
+                  <div class="price_value">
+                    <p class="current-price">{{ 'Currency.currency' | translate }}12</p>
+                    <p class="old-price">{{ 'Currency.currency' | translate }}14</p>
+                  </div>
+                </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item3.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Hybrid Tomato (Tamatar)</h3>
+                <div class="price-container">
+                  <div class="price_div">
+                    <p class="product-quantity">500 g</p>
+                  </div>
+                  <div class="price_value">
+                    <p class="current-price">{{ 'Currency.currency' | translate }}12</p>
+                    <p class="old-price">{{ 'Currency.currency' | translate }}14</p>
+                  </div>
+                </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item3.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Hybrid Tomato (Tamatar)</h3>
+                <div class="price-container">
+                  <div class="price_div">
+                    <p class="product-quantity">500 g</p>
+                   
+                  </div>
+                  <div class="price_value">
+                    <p class="current-price">{{ 'Currency.currency' | translate }}12</p>
+                    <p class="old-price">{{ 'Currency.currency' | translate }}14</p>
+                  </div>
+                </div>
+                <div class="counter_section">
+                  <ion-button fill="solid" color="none" size="small" class="added_btn"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                  <p>1</p>
+                  <ion-button fill="solid" color="none" size="small" class="added_btn"><ion-icon name="add-outline"></ion-icon></ion-button>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+  
+    </div>
+  </ion-grid>
+</ion-content>

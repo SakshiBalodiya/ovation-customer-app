@@ -1,0 +1,139 @@
+ion-header{
+  box-shadow: none;
+  padding: 30px 6px 2px 6px;
+}
+ion-toolbar {
+  --background: transparent;
+  --border-width: 0px !important;
+}
+ion-grid{
+    padding: 0px 12px;
+}
+.header h1{
+    font-size: 18px;
+    margin: 0px;
+    font-weight: 600;
+    margin-right: 18px;
+}
+// .header ion-col{
+//     display: flex;
+//     justify-content:space-between;
+//     align-items: center;
+// }
+.header ion-col ion-icon{
+    zoom: 1.6;
+}
+ion-segment{
+    height: 46px;
+    background: var(--ion-color-tertiary-shade);
+
+}
+
+.segment_btn.active-segment{
+    background: var(--ion-color-primary);
+    color: var(--ion-color-primary-contrast);
+    --indicator-color : none !important;
+    --background-hover : none !important;
+    --background-focused : none !important;
+    --background-activated-opacity : none;
+    --color : #fff;
+    --background-hover-opacity : none;
+    --background-focused-opacity : none;
+    --color-checked : #fff;
+    border : none;
+    --indicator-height : 0px !important;
+}
+.order_img ion-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #cacaca;
+    padding: 6px;
+  }
+.order_details{
+   
+    p{
+        margin: 0px;
+    }
+}
+.order ion-card{
+    margin: 6px 0px;
+    padding: 10px;
+    border-radius: 14px;
+    box-shadow: 0px 0px 10px 3px rgb(0 0 0 / 10%);
+}
+.border_bottom{
+    border-bottom: 1px solid #F5F6F5;;
+}
+.order_details {
+    display: flex;
+  
+  }
+  
+  .order_img ion-img {
+    max-width: 50px;
+ 
+  }
+  
+  .order-info  h1{
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+}
+  
+  .order-info p {
+    margin: 0;
+    font-size: 14px;
+  }
+  .order-status{
+    padding-right: 0px;
+  }
+  .order-status ion-chip {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    
+    font-size: 14px;
+    font-family: 'Poppins';
+    border-radius: 6px !important;
+  
+  }
+  .pending ion-chip{
+    --background : #EEF9F0;
+    color: #5AC268;
+  }
+  .complete ion-chip {
+    --background : #f6f6f6;
+    color: #484848;
+    
+  }
+  .order-date{
+    p{
+        margin: 0px;
+    }
+    padding: 10px 0px;
+    .price{
+        font-size: 18px;
+        font-weight: 600;
+        color: #000;
+    }
+  }
+  .call{
+
+        display: flex;
+        justify-content: end;
+        padding: 10px 0px;
+    
+  }
+  .call   ion-button {
+    // margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: var(--ion-color-primary);
+    border-radius: 6px;
+    height: 40px;
+    width: 120px;
+  
+
+  }
+  

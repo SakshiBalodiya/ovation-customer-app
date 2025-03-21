@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="header">
+      <ion-col class="ion-text-center">
+        <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']" class="ion-float-left"></ion-icon>
+        <h1>{{ 'AddAddress.addaddress' | translate }}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content scroll-y="false">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <label class="input-label">House / Flat / Block No.</label>
+        <div class="input-container">
+          <ion-textarea type="text" value="" name="address" class="custom-input"></ion-textarea>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <label class="input-label">Save As</label>
+        <div>
+          <ion-chip class="address_type" value="home" [class.active-tab]="selected === 'home'" (click)="setActive('home')">
+            <ion-icon name="home" [class.active-tab]="selected === 'home'" (click)="setActive('home')"></ion-icon>Home</ion-chip>
+          <ion-chip  class="address_type" value="work" [class.active-tab]="selected === 'work'" (click)="setActive('work')">
+            <ion-icon name="briefcase" [class.active-tab]="selected === 'work'" (click)="setActive('work')"></ion-icon>Work</ion-chip>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
+        <ion-button color="none">Add Address</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

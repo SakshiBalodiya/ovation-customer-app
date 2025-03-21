@@ -1,0 +1,96 @@
+
+ion-toolbar {
+    --background: transparent;
+    --border-width: 0px !important;
+}
+ion-header{
+    box-shadow: none;
+    padding: 24px 6px 10px 6px;
+}
+  ion-grid{
+      padding: 10px 10px;
+  }
+  .header h1{
+      font-size: 18px;
+      margin: 0px;
+      font-weight: 600;
+  }
+  // .header ion-col{
+  //     display: flex;
+  //     justify-content:space-between;
+  //     align-items: center;
+  // }
+  .header ion-col ion-icon{
+      zoom: 1.6;
+  }
+  .input-container {
+    border: 1px solid var(--ion-color-primary);
+    border-radius: 8px;
+    padding: 0px 10px;
+    // margin-bottom: 16px;
+    // display: flex;
+    // flex-direction: column;
+    // gap: 8px;
+ 
+  }
+  
+  .input-label {
+    font-size: 14px;
+    color: var(--ion-color-primary);
+  }
+  
+  .custom-input {
+    font-size: 16px;
+    padding: 4px;
+    border: none;
+    outline: none;
+    width: 100%;
+    min-height: 45px;
+  }
+  ion-button {
+    // margin-top: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: var(--ion-color-primary);
+    border-radius: 6px;
+ 
+    max-width: 100%;
+  }
+  .address_type{
+    width: 115px;
+    // display: flex;
+    gap: 14px;
+    background: #eaeaea;
+    border: 2px solid #8080808f;
+    color: #000;
+    font-size: 14px;
+    font-family: 'Poppins';
+    border-radius: 22px;
+
+  }
+  .address_type ion-icon{
+    color: #8080808f;
+}
+  .address_type.active-tab {
+    width: 115px;
+    // display: flex;
+    gap: 14px;
+    background: #eaeaea;
+    border: 2px solid var(--ion-color-primary);
+    color: #000;
+    font-size: 14px;
+    color: var(--ion-color-primary);
+    }
+    ion-textarea{
+        --highlight-color-focused : none;
+    }
+    .address_type ion-icon.active-tab {
+        // width: 115px;
+        // // display: flex;
+        // gap: 14px;
+        // background: #eaeaea;
+        // border: 2px solid var(--ion-color-primary);
+        // color: #000;
+        // font-size: 14px;
+        color: var(--ion-color-primary);
+    }

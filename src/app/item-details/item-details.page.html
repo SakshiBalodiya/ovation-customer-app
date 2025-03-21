@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-row class="header">
+    <ion-col>
+      <ion-icon name="chevron-back-outline" [routerLink]="['/category']"></ion-icon>
+      <h1>{{ 'ItemDetails.itemdetails' | translate }}</h1>
+      <ion-icon name="heart" class="like"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <swiper-container  slides-per-view="1" style="width: 100%;" pagination="true">
+        <swiper-slide>
+          <ion-col class="slider-item">
+            <ion-img src="assets/images/item_6.png"></ion-img>
+          </ion-col>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-col class="slider-item">
+            <ion-img src="assets/images/item_6.png"></ion-img>
+          </ion-col>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-col class="slider-item">
+            <ion-img src="assets/images/item_6.png"></ion-img>
+          </ion-col>
+        </swiper-slide>
+      </swiper-container>
+    </ion-row>
+    <ion-row>
+      <h2>Fortune Sun Lite Refined Sunflower Oil</h2>
+    </ion-row>
+    <ion-row class="rating">
+      <ion-icon name="star" class="selected"></ion-icon>
+      <ion-icon name="star" class="selected"></ion-icon>
+      <ion-icon name="star" class="selected"></ion-icon>
+      <ion-icon name="star" class="selected"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <p>4.0 (146 {{ 'ItemDetails.reviews' | translate }})</p>
+    
+    </ion-row>
+    <ion-row class="price">  
+      <ion-col class="price_col">
+        <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+        <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
+        <ion-chip>10% OFF</ion-chip>
+      </ion-col>
+    </ion-row>
+    <ion-row class="item_details"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+      incididunt ut labore et dolore magna aliqua. <span>Read More</span></p></ion-row>
+    <ion-row>
+      <h2>{{ 'ItemDetails.reviewsandratings' | translate }}</h2>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2" class="reviews_data">
+        <h2>4.2</h2>
+      </ion-col>
+      <ion-col class="rating_data">
+        <ion-icon name="star" class="selected"></ion-icon>
+        <ion-icon name="star" class="selected"></ion-icon>
+        <ion-icon name="star" class="selected"></ion-icon>
+        <ion-icon name="star" class="selected"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <p>146 {{ 'ItemDetails.reviews' | translate }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="review_section">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <ion-img src="" alt="User Avatar" class="default"></ion-img>
+        </ion-avatar>
+        <ion-label class="user_data">
+          <h2>Johnson Smith</h2>
+          <p>April 10, 2023</p>
+        </ion-label>
+        <ion-icon name="star" class="selected"></ion-icon>
+        <ion-icon name="star" class="selected"></ion-icon>
+        <ion-icon name="star" class="selected"></ion-icon>
+        <ion-icon name="star" class="selected"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+      </ion-item>
+    
+      <ion-card-content>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+        </p>
+        <div class="review-images">
+          <ion-img src="assets/images/item_6.png" alt="Review Image 1" ></ion-img>
+          <ion-img src="assets/images/item_6.png" alt="Review Image 2"></ion-img>
+        </div>
+      </ion-card-content>
+    </ion-row>
+    <ion-row>
+      <h2>{{ 'ItemDetails.similarproducts' | translate }}</h2>
+    </ion-row>
+    <ion-row>
+      <swiper-container class="mySwiper" slides-per-view="1.5" style="width: 100%;">
+        <swiper-slide>
+          <ion-row class="best_deal_section">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+                <p class="product-quantity">500 ml</p>
+                <div class="price-container">
+                  <div class="price_div_trending">
+                    <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                    <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
+                  </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                </div>
+                  
+                </div>
+                
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-row>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-row class="best_deal_section">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+                <p class="product-quantity">500 ml</p>
+                <div class="price-container">
+                  <div class="price_div_trending">
+                    <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                    <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
+                  </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                </div>
+                  
+                </div>
+                
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-row>
+        </swiper-slide>
+      </swiper-container>
+    </ion-row>
+    
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-row class="align-center static_footer">
+    <!-- Quantity Control -->
+    <ion-col size="4" class="quantity-control">
+      <ion-button fill="clear" color="none">
+        <ion-icon name="remove-outline"></ion-icon>
+      </ion-button>
+      <span class="quantity">1</span>
+      <ion-button fill="clear" color="none">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+    <!-- Add to Cart Button -->
+    <ion-col size="8" class="add-to-cart">
+      <ion-button expand="block" class="add-cart-button" [routerLink]="['/cart']">
+        {{ 'ItemDetails.addtocart' | translate }}
+        <span class="price-divider"></span>
+        <span class="amount">{{ 'Currency.currency' | translate }}12</span>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

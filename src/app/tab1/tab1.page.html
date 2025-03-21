@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-row class="location_section">
+    <ion-col size="1"><ion-icon name="location-outline"></ion-icon></ion-col>
+    <ion-col size="10" class="address" (click)="address()">
+      <h1>Home <ion-icon name="chevron-down-outline" class="down_arrow"></ion-icon></h1>
+      <p>B-177 Nityanand Nagar</p>
+    </ion-col>
+    <ion-col size="1" [routerLink]="['/cart']">
+      <ion-icon name="bag-handle-outline"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-searchbar></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <ion-row  class="align_center mb-10">
+      <ion-col>
+        <h1>{{ 'HOME.shopbycategory' | translate }}</h1>
+      </ion-col>
+      <ion-col class="ion-text-end see_all">
+        <p [routerLink]="['/category']">{{ 'HOME.seeall' | translate }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/item1.png"></ion-img>
+          <ion-card-content>
+            <p>Cold Drinks & Juices</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/item2.png"></ion-img>
+          <ion-card-content>
+            <p>Instant & Frozen Food</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/item1.png"></ion-img>
+          <ion-card-content>
+            <p>Cold Drinks & Juices</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/item1.png"></ion-img>
+          <ion-card-content>
+            <p>Cold Drinks & Juices</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/item2.png"></ion-img>
+          <ion-card-content>
+            <p>Instant & Frozen Food</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/item1.png"></ion-img>
+          <ion-card-content>
+            <p>Cold Drinks & Juices</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+      <ion-card class="promo-card">
+        <ion-card-content>
+          <h2>World Food Festival, Bring the world to your Kitchen!</h2>
+          <ion-button expand="block" color="none" class="shop_btn" [routerLink]="['/category']">Shop Now</ion-button>
+        </ion-card-content>
+        <ion-img src="assets/images/item1.png"></ion-img>
+      </ion-card>
+      <ion-row  class="align_center">
+        <ion-col>
+          <h1>{{ 'HOME.bestdeal' | translate }}</h1>
+        </ion-col>
+        <ion-col class="ion-text-end see_all">
+          <p [routerLink]="['/bestdeal']">{{ 'HOME.seeall' | translate }}</p>
+        </ion-col>
+      </ion-row>
+      <swiper-container class="mySwiper" slides-per-view="1.5" style="width: 100%;">
+        <swiper-slide>
+          <ion-row class="best_deal_section">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+                <p class="product-quantity">500 ml</p>
+                <div class="price-container">
+                  <div class="price_div">
+                    <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                    <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
+                  </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block" [routerLink]="['/cart']">Add</ion-button>
+                </div>
+                  
+                </div>
+                
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-row>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-row class="best_deal_section">
+            <ion-card class="product-card">
+              <ion-card-header>
+                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+                <p class="product-quantity">500 ml</p>
+                <div class="price-container">
+                  <div class="price_div">
+                    <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                    <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
+                  </div>
+                <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block" [routerLink]="['/cart']">Add</ion-button>
+                </div>
+                  
+                </div>
+                
+              </ion-card-content>
+            </ion-card>
+            
+          </ion-row>
+        </swiper-slide>
+      </swiper-container>
+
+  </ion-grid>
+
+</ion-content>

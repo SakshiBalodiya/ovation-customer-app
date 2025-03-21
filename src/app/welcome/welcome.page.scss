@@ -1,0 +1,46 @@
+ion-content{
+    --background: #EEF9F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .slide-content {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .slide-image {
+    max-width: 200px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .next-button {
+    margin-top: 20px;
+    --icon-size: 30px;
+  }
+  
+  .skip-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #00c853;
+  }
+  
+.mySwiper {
+    width: 94% !important;
+    margin: 0px !important;
+  }

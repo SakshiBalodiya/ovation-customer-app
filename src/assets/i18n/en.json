@@ -1,0 +1,100 @@
+{
+    "LOGIN": {
+        "login": "Login",
+        "username": "Username",
+        "password": "Password",
+        "forgotpass": "Forgot Password?",
+        "signinwith": "Didn't have an account?"
+    },
+    "REGISTER": {
+        "signup": "Register",
+        "createaccount": "Create a Account",
+        "sub-heading": "Looks like you don't have an account. Let's create a new account for you.",
+        "fullname": "Full Name",
+        "email": "Email",
+        "number": "Phone Number",
+        "password": "Password",
+        "confirmpassword": "Confirm Password",
+        "terms": "I accept terms & conditions",
+        "haveaccount": "Already have an account?"
+    },
+    "HOME":
+    {
+        "shopbycategory": "Shop By Category",
+        "seeall": "See All",
+        "bestdeal": "Best Deal"
+    },
+    "ItemDetails":
+    {
+        "itemdetails": "Item Details",
+        "reviews": "Reviews",
+        "reviewsandratings": "Reviews & Ratings",
+        "similarproducts": "Similar Products",
+        "add": "Add",
+        "addtocart": "Add to Cart"
+    },
+    "Currency":
+    {
+        "currency": "₹"
+
+    },
+    "BestDeal":
+    {
+        "bestdeal": "Best Deal"
+    },
+    "Search":
+    {
+       "recentsearch": "Recent Search",
+       "trendingnow": "Trending Now",
+       "showingresultfor": "Showing Result for"
+    },
+    "Cart":
+    {
+        "cart": "Cart",
+        "checkout": "Checkout",
+        "beforeyoucheckout": "Before you Checkout",
+        "ordersummary": "Order Summary",
+        "placeorder": "Place Order",
+        "deliveryaddress": "Delivery Address",
+        "paymentdetails": "Payment Details"
+    },
+    "Order": 
+    {
+        "myorder": "My Order"
+
+    },
+    "Profile":{
+        "myprofile": "My Profile",
+        "editprofile": "Edit Profile",
+        "createnewpassword":"Create New Password",
+        "newpassword":"New Password",
+        "oldpassword":"Old Password",
+        "confirmpassword":"Confirm Password"
+    },
+    "Privacy":
+    {
+        "privacypolicy": "Privacy Policy"
+    },
+    "TearmsAndCondition":
+    {
+        "termsandcondition": "Terms & Conditions"
+    },
+    "AddAddress":
+    {
+        "addaddress": "Add Address"
+    },
+    "EditAddress": {
+        "editaddress": "Edit Address"
+    },
+    "ForgotPassword": {
+        "forgotpassword": "Forgot Password",
+        "sendpasswordresetlink": "Send Password Reset Link"
+    },
+    "WishList":
+    {
+        "wishlist": "Wishlist"
+    }
+    
+
+    
+}

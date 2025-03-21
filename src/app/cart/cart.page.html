@@ -1,0 +1,208 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-row class="header">
+    <ion-col class="ion-text-center">
+      <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']" class="ion-float-left"></ion-icon>
+      <h1>{{ 'Cart.cart' | translate }}</h1>
+    </ion-col>
+  </ion-row>
+</ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-row class="added_item">
+          <ion-col size="3" class="item_img">
+            <ion-img src="assets/images/item_6.png" alt="item_6"></ion-img>
+          </ion-col>
+          <ion-col>
+            <p class="item_name">Fortune Sun Lite Refined Sunflower Oil</p>
+            <ion-row class="selected_item">
+              <ion-col size="4" class="item_price">
+                <p class="weight">5 L</p>
+                <p class="price">{{ 'Currency.currency' | translate }}12</p>
+              </ion-col>
+          
+              <ion-col size="6" class="quantity-control">
+                <ion-button fill="clear" color="none">
+                  <ion-icon name="remove-outline"></ion-icon>
+                </ion-button>
+                <span class="quantity">1</span>
+                <ion-button fill="clear" color="none">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="12">
+        <ion-row class="added_item">
+          <ion-col size="3" class="item_img">
+            <ion-img src="assets/images/item_6.png" alt="item_6"></ion-img>
+          </ion-col>
+          <ion-col>
+            <p class="item_name">Fortune Sun Lite Refined Sunflower Oil</p>
+            <ion-row class="selected_item">
+              <ion-col size="4" class="item_price">
+                <p class="weight">5 L</p>
+                <p class="price">{{ 'Currency.currency' | translate }}12</p>
+              </ion-col>
+          
+              <ion-col size="6" class="quantity-control">
+                <ion-button fill="clear" color="none">
+                  <ion-icon name="remove-outline"></ion-icon>
+                </ion-button>
+                <span class="quantity">1</span>
+                <ion-button fill="clear" color="none">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  <ion-row class="spacing">
+    <h2>{{ 'Cart.beforeyoucheckout' | translate }}</h2>
+  </ion-row>
+
+    <swiper-container class="mySwiper" slides-per-view="1.5" style="width: 100%;">
+      <swiper-slide>
+        <ion-row class="best_deal_section">
+          <ion-card class="product-card">
+            <ion-card-header>
+              <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+              <ion-icon name="heart" class="favorite-icon"></ion-icon>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+              
+              <div class="price-container">
+                <div class="price_div">
+                  <p class="product-quantity">500 ml</p>
+                </div>
+                <div class="price_value">
+                  <p class="current-price">{{ 'Currency.currency' | translate }}12</p>
+                  <p class="old-price">{{ 'Currency.currency' | translate }}14</p>
+                </div>
+              </div>
+              <div>
+                <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+              </div>
+              
+            </ion-card-content>
+          </ion-card>
+          
+        </ion-row>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-row class="best_deal_section">
+          <ion-card class="product-card">
+            <ion-card-header>
+              <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+              <ion-icon name="heart" class="favorite-icon"></ion-icon>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+              
+              <div class="price-container">
+                <div class="price_div">
+                  <p class="product-quantity">500 ml</p>
+                </div>
+                <div class="price_value">
+                  <p class="current-price">{{ 'Currency.currency' | translate }}12</p>
+                  <p class="old-price">{{ 'Currency.currency' | translate }}14</p>
+                </div>
+              </div>
+              <div>
+                <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+              </div>
+              
+            </ion-card-content>
+          </ion-card>
+          
+        </ion-row>
+      </swiper-slide>
+    </swiper-container>
+    <ion-row class="headings_row">
+      <h2>{{ 'Cart.ordersummary' | translate }}</h2>
+    </ion-row>
+    <ion-row class="border_top">
+      <ion-col style="padding: 0px;">
+        <ion-row>
+          <ion-col>Item Total</ion-col>
+          <ion-col class="ion-text-end">{{ 'Currency.currency' | translate }}24</ion-col>
+        </ion-row>
+        <!-- <ion-row>
+          <ion-col>Discount</ion-col>
+          <ion-col class="ion-text-end">$2</ion-col>
+        </ion-row> -->
+        <ion-row class="free">
+          <ion-col>Delivery Free</ion-col>
+          <ion-col class="ion-text-end">Free</ion-col>
+        </ion-row>
+  
+      </ion-col>
+    </ion-row>
+    <ion-row class="border_top total">
+      <ion-col>
+        Total
+      </ion-col>
+      <ion-col class="ion-text-end">{{ 'Currency.currency' | translate }}24</ion-col>
+    </ion-row>
+    <!-- <ion-row class="headings_row">
+      <h2>{{ 'Cart.deliveryaddress' | translate }}</h2>
+    </ion-row> -->
+    
+    <!-- <ion-row class="headings_row">
+      <h2>{{ 'Cart.paymentdetails' | translate }}</h2>
+    </ion-row>
+    <ion-row class="payment_section">
+      <ion-col>
+      <ion-card>
+     
+          <h1>Cash on Delivery</h1>
+       
+      </ion-card>
+    </ion-col>
+    </ion-row> -->
+   
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-row class="address_section" (click)="address()">
+    <ion-card>
+      <ion-col class="address_section">
+        <div class="home_icon">
+          <ion-img src="assets/images/home.png" alt="home" class="default"></ion-img>
+        </div>
+        <ion-label>
+          <h2>Delivering to <span class="address_title">Home</span></h2>
+          <p>B-177 Nityanand Nagar, Queens's Road, Jaipur - 302021</p>
+        </ion-label>
+        <div class="change"><p>Change</p></div>
+      </ion-col>
+    </ion-card>
+  </ion-row>
+  <ion-row class="align-center static_footer">
+    <ion-col  size="" class="payment_type">
+      <h1>Pay Using</h1>
+      <p>Cash on Delivery</p>
+    </ion-col>
+  
+    <!-- Add to Cart Button -->
+    <ion-col size="8" class="add-to-cart">
+      <ion-button expand="block" class="add-cart-button" (click)="orderPlaced()">
+        <span class="amount">{{ 'Currency.currency' | translate }}12</span>
+        
+        <span class="price-divider"></span>
+        {{ 'Cart.placeorder' | translate }}
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

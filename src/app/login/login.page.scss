@@ -1,0 +1,134 @@
+// changed here
+.header-image{
+    height: 80px;
+  }
+  ion-content {
+    background-color: #fff !important;
+
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin: 0px 0px 6px 0px;
+    font-weight: 500;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  .help-msg{
+    color: var(--ion-color-danger);
+    // margin-left: 48px;
+  }
+  .div_align_center {
+    // height:100%;
+    background-color: var(--ion-color-primary-contrast);
+    overflow-y: scroll;
+    height: 88%;
+    display: flex;
+    align-items: center;
+  }
+  ion-title {
+    background-color: var(--ion-color-primary-contrast);
+    color: #141313;
+}
+  .logo{
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin: auto;
+  }
+
+    .btn-row{
+      padding-left: 10px;
+      padding-right: 10px;
+      height:40px;
+      margin-bottom: 10px;
+    }
+
+    .img {
+      width: 50%;
+      display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    .sign_btn {
+      background-color: var(--ion-color-primary) !important;
+      // background-color: var( --ion-color-tasktutorial,#f03b3b);
+      border-radius: 8px;
+      width: 100%;
+      --box-shadow: none;
+    
+      max-width: 100%;
+    }
+   
+    ion-input::part(placeholder) {
+      color: rgb(32, 32, 32);
+    }
+    .input-wrapper.sc-ion-input-md input.sc-ion-input-md {
+    color: #000;
+    -webkit-transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+  
+    .header-background {
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+    }
+  
+ 
+  .forgot_btn{
+   color: #c72c3c; 
+   padding-left: 4px;
+   text-decoration: underline;
+  //  border-bottom: 1px solid #ec4c4c;
+  }
+ 
+  ion-input {
+    min-height: 50px;
+    padding-left: 10px !important;
+    --highlight-color-focused : none;
+  }
+  .pass-input, .email-input{
+    display: flex;
+    border: 1px solid var(--ion-color-secondary-contrast);
+    border-radius: 6px;
+    align-items: center;
+    margin-top: 6px;
+  }
+  .eye-icon{
+    color: var(--ion-color-dark);
+    padding-right: 10px;
+    font-size: 24px;
+  }
+  ion-label {
+      color: #000;
+      font-size: 16px;
+      font-weight: 500;
+  }
+
+  ion-input::placeholder {
+      color: #000;
+  }
+  
+  
+  .signin-text{
+    text-align: center;
+    // margin-top: 10px;
+    margin-bottom: 10px;
+    // position: fixed;
+    // width: 100%;
+    // bottom: 6px;
+}
+ 
+
+  .form-div{
+    padding: 0 12px;
+  }
+
+  

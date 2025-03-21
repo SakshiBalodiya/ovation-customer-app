@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Ovation</string>
+    <string name="title_activity_main">Ovation</string>
+    <string name="package_name">Majestic.restoji.customer</string>
+    <string name="custom_url_scheme">Majestic.restoji.customer</string>
+</resources>

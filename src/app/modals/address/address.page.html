@@ -1,0 +1,42 @@
+<ion-content>
+  <ion-grid>
+    <ion-row class="heading add_padding">
+      <ion-col><h1>Select an Address</h1></ion-col>
+    </ion-row>
+    <ion-radio-group value="custom-checked">
+      <!-- Home Address -->
+      <ion-card class="address-card">
+        <ion-item lines="none">
+          <ion-radio slot="start" value="home"></ion-radio>
+          <ion-label>
+            <h3>Home</h3>
+            <p>B-177 Nityanand Nagar, Queens's Road, Jaipur - 302021</p>
+          </ion-label>
+          <ion-icon name="ellipsis-vertical" slot="end" [routerLink]="['/edit-address']"></ion-icon>
+        </ion-item>
+      </ion-card>
+  
+      <!-- Work Address -->
+      <ion-card class="address-card">
+        <ion-item lines="none">
+          <ion-radio slot="start" value="custom"></ion-radio>
+          <ion-label>
+            <h3>Work</h3>
+            <p>G 1, Maharana Pratap Marg, Gandhi Path, Jaipur - 302034</p>
+          </ion-label>
+          <ion-icon name="ellipsis-vertical" slot="end" [routerLink]="['/edit-address']"></ion-icon>
+        </ion-item>
+      </ion-card>
+    </ion-radio-group>
+  
+    <!-- Add New Address Button -->
+     <ion-row class="ion-justify-content-center add_padding">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button  class="add-address-button" color="none" [routerLink]="['/add-address']">
+          + Add New Address
+        </ion-button>
+      </ion-col>
+     </ion-row>
+ 
+  </ion-grid>
+</ion-content>

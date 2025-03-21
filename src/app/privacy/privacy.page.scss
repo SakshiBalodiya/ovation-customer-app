@@ -1,0 +1,28 @@
+ion-header{
+    box-shadow: none;
+    padding: 24px 6px 10px 6px;
+  }
+  .header h1{
+    font-size: 18px;
+    margin: 0px;
+    font-weight: 600;
+}
+
+ion-toolbar {
+    --background: transparent;
+    --border-width: 0px !important;
+  }
+// .header ion-col{
+//     display: flex;
+//     justify-content:space-between;
+//     align-items: center;
+// }
+.header ion-col ion-icon{
+    zoom: 1.6;
+}
+ion-grid{
+    padding: 10px 18px;
+}
+.justify{
+    text-align: justify;
+}

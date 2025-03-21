@@ -1,0 +1,147 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+// @import "@ionic/angular/css/palettes/dark.system.css";
+html {
+  color-scheme: light;
+}
+body {
+  --ion-color-scheme: light;
+  background-color: #ffffff;
+  color: #000000;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    --ion-background-color: #ffffff;
+    --ion-text-color: #000000;
+  }
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: 700;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: 400;
+  }
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins/Poppins-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: 200;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: 300;
+  }
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: 500;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins/Poppins-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: 100;
+  }
+  body {
+    font-family: 'Poppins'  !important;
+  }
+  h1{
+    color: #000000;
+  }
+  h1, h2, h3, h4, h5, h6{
+    font-family: 'Poppins'  !important;
+  }
+  p{
+    font-family: 'Poppins'  !important;
+  }
+  ion-input{
+    font-family: 'Poppins' !important;
+  }
+ion-label{
+  font-family: 'Poppins'  !important;
+}
+ion-col{
+  font-family: 'Poppins'  !important;
+}
+ion-row{
+  font-family: 'Poppins'  !important;
+}
+ion-button{
+  font-family: 'Poppins'  !important;
+  --box-shadow: none !important;
+}
+ion-card-title{
+  font-family: 'Poppins'  !important;
+}
+ion-button {
+    border-radius: 8px !important;
+    width: 100%;
+    max-width: 200px;
+    text-transform: capitalize;
+    color: var(--ion-color-primary-contrast);
+    height: 52px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  .sortBy-modal{
+    --backdrop-opacity: 0.8;
+    --border-radius: 26px;
+
+  }
+  .address-modal{
+    --backdrop-opacity: 0.8;
+    --border-radius: 26px;
+  }
+  .orderPlaced-modal{
+    --height: 290px;
+    --width: 90%;
+    --border-radius: 14px;
+  
+  }

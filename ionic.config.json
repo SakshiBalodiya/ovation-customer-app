@@ -1,0 +1,7 @@
+{
+  "name": "restoji-customer-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

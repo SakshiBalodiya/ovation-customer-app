@@ -1,0 +1,14 @@
+ion-tab-button {
+  --background: var(--background);
+  --color: var(--color);
+}
+ion-tab-bar{
+  height : 60px !important;
+  --background : #fff !important;
+  --box-shadow: none;
+  --border : none !important;
+}
+
+// ion-tab-button.active-tab ion-img{
+//   filter: brightness(0) saturate(100%) invert(20%) sepia(96%) saturate(2021%) hue-rotate(336deg) brightness(94%) contrast(91%);
+// }

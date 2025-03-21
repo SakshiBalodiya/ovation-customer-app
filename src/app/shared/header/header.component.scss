@@ -1,0 +1,29 @@
+ion-header{
+    box-shadow: none;
+  }
+  .header h1{
+      font-size: 18px;
+      margin: 0px;
+      font-weight: 600;
+  }
+  .header ion-col{
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+  }
+  .header ion-col ion-icon{
+      zoom: 1.2;
+  }
+  .header-center {
+    display: flex;
+ 
+    align-items: center;
+  ion-col ion-icon{  
+  zoom: 1.2;
+  }
+    h1{
+        font-size: 18px;
+        margin: 0px;
+        font-weight: 600;
+    }
+  }
