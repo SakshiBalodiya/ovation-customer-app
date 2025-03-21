@@ -1,0 +1,45 @@
+
+.inner-circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 74px;
+    border-radius: 50%;
+    background-color: #5AC268;
+}
+
+.icon-wrapper{
+    ion-img{
+        filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(13%) hue-rotate(253deg) brightness(102%) contrast(100%);
+    }
+}
+.outer-circle{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 114px;
+    height: 112.26px;
+    border-radius: 50%;
+    margin: 0px 16px;
+    background-color: #EEF9F0;
+}
+.circle_img {
+padding: 20px 0px;
+
+ion-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+}
+.view_btn{
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ion-button{
+        max-width: 100%;
+    }
+}

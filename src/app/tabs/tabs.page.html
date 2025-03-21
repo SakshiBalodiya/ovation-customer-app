@@ -2,20 +2,31 @@
   <ion-tab-bar slot="bottom">
     <!-- Home Tab -->
     <ion-tab-button tab="tab1" href="/tabs/tab1"  [class.active-tab]="selectedTab === 'tab1'" (click)="setActiveTab('tab1')">
-      <ion-icon name="home-outline" [class.active-tab]="selectedTab === 'tab2'"></ion-icon>
+      <!-- <ion-icon name="home-outline" [class.active-tab]="selectedTab === 'tab2'"></ion-icon> -->
+      <ion-img class="wishlist-icon" [class.active]="selectedTab === 'tab1'"  src="assets/images/home.png"></ion-img>
+      <ion-text>Home</ion-text>
     </ion-tab-button>
 
     <ion-tab-button tab="tab2" href="/tabs/tab2" [class.active-tab]="selectedTab === 'tab2'" (click)="setActiveTab('tab2')">
-      <ion-icon name="cube-outline" [class.active-tab]="selectedTab === 'tab2'"></ion-icon>
+      <!-- <ion-icon name="cube-outline" [class.active-tab]="selectedTab === 'tab2'"></ion-icon> -->
+      <ion-img class="wishlist-icon" [class.active]="selectedTab === 'tab2'" src="assets/images/orders.png"></ion-img>
+      <ion-text>Orders</ion-text>
     </ion-tab-button>
     <!-- Shopping Bag Tab -->
     <ion-tab-button tab="tab3" href="/cart" [class.active-tab]="selectedTab === 'tab3'" (click)="setActiveTab('tab3')">
-      <ion-icon name="heart-circle-outline" [class.active-tab]="selectedTab === 'tab3'"></ion-icon>
+      <ion-img 
+        class="wishlist-icon"
+        [class.active]="selectedTab === 'tab3'" 
+        src="assets/images/wishlist.png">
+      </ion-img>
+      <ion-text>Wishlist</ion-text>
     </ion-tab-button>
 
     <!-- User Tab -->
     <ion-tab-button tab="tab4" href="/tabs/tab4" [class.active-tab]="selectedTab === 'tab4'" (click)="setActiveTab('tab4')">
-      <ion-icon name="person-outline" [class.active-tab]="selectedTab === 'tab4'"></ion-icon>
+      <!-- <ion-icon name="person-outline" [class.active-tab]="selectedTab === 'tab4'"></ion-icon> -->
+      <ion-img class="wishlist-icon" [class.active]="selectedTab === 'tab4'" src="assets/images/profile.png"></ion-img>
+      <ion-text>Profile</ion-text>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

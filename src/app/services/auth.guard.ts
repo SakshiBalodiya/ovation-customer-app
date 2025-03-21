@@ -10,9 +10,9 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.envService.user_login) {
-      return true; // Allow navigation
+      return true; 
     } else {
-      this.router.navigate(['']); // Redirect to login page
+      this.router.navigate(['']); 
       return false;
     }
   }

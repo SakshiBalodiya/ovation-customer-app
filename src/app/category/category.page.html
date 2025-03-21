@@ -2,147 +2,91 @@
   <ion-toolbar>
     <ion-row class="header">
       <ion-col>
-        <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']"></ion-icon>
-        <h1>Neutraceuticals</h1>
+        <ion-icon name="chevron-back-outline" (click)="back()"></ion-icon>
+        <h1>{{ selectedCategory?.name || 'Categories' }}</h1>
         <ion-icon name="search-outline" [routerLink]="['/search']"></ion-icon>
       </ion-col>
     </ion-row>
 </ion-toolbar>
 </ion-header>
-<ion-content scroll-y="false">
+<ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="3" class="category_section">
+      <!-- Category List -->
+      <!-- <ion-col size="3" class="category_section">
         <ion-row>
-          <ion-col size="12">
-            <ion-card class="item_card">
-              <ion-img src="assets/images/Neutraceuticals.png"></ion-img>
+          <ion-col *ngFor="let category of categories" size="12" (click)="selectCategory(category)">
+            <ion-card class="item_card" [class.active]="category.id === selectedCategory?.id">
+              <ion-img [src]="category.image ? category.image : 'assets/images/item1.png'"></ion-img>
               <ion-card-content>
-                <p>Neutraceuticals</p>
+                <p>{{ category.name }}</p>
               </ion-card-content>
             </ion-card>
           </ion-col>
-          <ion-col size="12">
-            <ion-card class="item_card">
-              <ion-img src="assets/images/eyedrop.png"></ion-img>
+
+        </ion-row>
+      </ion-col> -->
+      <ion-col size="3" [ngClass]="cartCount > 0 ? 'category_section' : 'category_section_full'">
+        <ion-row>
+          <ion-col *ngFor="let category of categories" size="12" (click)="selectCategory(category)"
+            [attr.id]="'category' + category.id">
+      
+            <ion-card class="item_card" [class.active]="category.id === selectedCategory?.id">
+              <ion-img [src]="category.image ? category.image : 'assets/images/ovation_item6.png'"></ion-img>
               <ion-card-content>
-                <p>Eye Drops</p>
+                <p>{{ category.name }}</p>
               </ion-card-content>
             </ion-card>
+      
           </ion-col>
-           <!-- <ion-col size="12">
-            <ion-card class="item_card">
-              <ion-img src="assets/images/item2.png"></ion-img>
-              <ion-card-content>
-                <p>Instant & Frozen Food</p>
-              </ion-card-content>
-            </ion-card>
-          </ion-col> -->
-          <ion-col size="12">
-            <ion-card class="item_card">
-              <ion-img src="assets/images/eyedrop.png"></ion-img>
-              <ion-card-content>
-                <p>Eye Drops</p>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-           <!-- <ion-col size="12">
-            <ion-card class="item_card">
-              <ion-img src="assets/images/item2.png"></ion-img>
-              <ion-card-content>
-                <p>Instant & Frozen Food</p>
-              </ion-card-content>
-            </ion-card>
-          </ion-col> -->
-          <!-- <ion-col size="12">
-            <ion-card class="item_card">
-              <ion-img src="assets/images/item4.png"></ion-img>
-              <ion-card-content>
-                <p>Fresh Vegetable</p>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-col size="12">
-            <ion-card class="item_card">
-              <ion-img src="assets/images/item2.png"></ion-img>
-              <ion-card-content>
-                <p>Instant & Frozen Food</p>
-              </ion-card-content>
-            </ion-card>
-          </ion-col> -->
         </ion-row>
       </ion-col>
-      <ion-col  class="item_scroll">
+
+
+
+      <!-- Product List for Selected Category -->
+      <ion-col [ngClass]="cartCount > 0 ? 'item_scroll' : 'item_scroll_full'">
         <ion-row>
-          <ion-col size="6">
-            <ion-card class="product-card">
-              <ion-card-header [routerLink]="['/item-details']">
-                <ion-img class="product-image" src="assets/images/ovation_item2.png"></ion-img>
-                <ion-icon name="heart" class="favorite-icon"></ion-icon>
-              </ion-card-header>
-            
-              <ion-card-content>
-                <h3 class="product-name">Neutraceuticals Ovation</h3>
-                <div class="price-container">
-                  <div class="price_div">
-                    <!-- <p class="product-quantity">1 L</p> -->
-                  </div>
-                  <div class="price_value">
-                    <p class="current-price">{{ 'Currency.currency' | translate }}120.00</p>
-                    <!-- <p class="old-price">{{ 'Currency.currency' | translate }}14</p> -->
-                  </div>
-                </div>
-                <div>
-                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
-                </div>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-col size="6">
+          <ion-col size="6" *ngFor="let product of filteredItems">
             <ion-card class="product-card">
               <ion-card-header>
-                <ion-img class="product-image" src="assets/images/ovation_item3.png"></ion-img>
-                <ion-icon name="heart" class="favorite-icon"></ion-icon>
+                <ion-img class="product-image"
+                  [src]="product.image ? product.image : 'assets/images/ovation_item6.png'"  (click)="itemDetails(product.id, product)"></ion-img>
+                <ion-icon [name]="isInWishlist(product.id) ? 'heart' : 'heart-outline'" [class.favorite-icon]="true"
+                  [class.active]="isInWishlist(product.id)" (click)="toggleWishlist(product.id)">
+                </ion-icon>
               </ion-card-header>
-            
               <ion-card-content>
-                <h3 class="product-name">Neutraceuticals Ovation</h3>
+                <h3 class="product-name">{{ product.name.length > 30 ? (product.name | slice:0:30) + '...' : product.name }}</h3>
                 <div class="price-container">
                   <div class="price_div">
-                    <!-- <p class="product-quantity">500 g</p> -->
+                    <p class="product-quantity">{{ product.quantity }}</p>
                   </div>
                   <div class="price_value">
-                    <p class="current-price">{{ 'Currency.currency' | translate }}120.00</p>
-                    <!-- <p class="old-price">{{ 'Currency.currency' | translate }}14</p> -->
+                    <p class="current-price">{{ 'Currency.currency' | translate }}{{ ((+product.price || 0) + ((+product.price || 0) * (+product.taxPercentage || 0) / 100))
+                    | number:'1.0-0' }}</p>
+                    <!-- <p class="old-price">{{ 'Currency.currency' | translate }}{{
+                      product.mrp }}</p> -->
                   </div>
                 </div>
-                <div>
-                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                <!-- <div>
+                  <ion-button fill="solid" color="none" size="small" expand="block" (click)="addToCart()">{{ 'ItemDetails.add' | translate
+                    }}</ion-button>
+                </div> -->
+                <div class="counter_section" *ngIf="getItemQuantity(product.id) > 0; else addButton">
+                  <ion-button fill="solid" color="none" size="small" class="added_btn" (click)="decrementItem(product.id)"><ion-icon
+                      name="remove-outline"></ion-icon></ion-button>
+                  <p>{{ getItemQuantity(product.id) }}</p>
+                  <ion-button fill="solid" color="none" size="small" class="added_btn" (click)="incrementItem(product.id)"><ion-icon
+                      name="add-outline"></ion-icon></ion-button>
                 </div>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-col size="6">
-            <ion-card class="product-card">
-              <ion-card-header>
-                <ion-img class="product-image" src="assets/images/ovation_item2.png"></ion-img>
-                <ion-icon name="heart" class="favorite-icon"></ion-icon>
-              </ion-card-header>
-            
-              <ion-card-content>
-                <h3 class="product-name">Neutraceuticals</h3>
-                <div class="price-container">
-                  <div class="price_div">
-                    <!-- <p class="product-quantity">500 g</p> -->
-                  </div>
-                  <div class="price_value">
-                    <p class="current-price">{{ 'Currency.currency' | translate }}120.00</p>
-                    <!-- <p class="old-price">{{ 'Currency.currency' | translate }}14</p> -->
-                  </div>
-                </div>
-                <div>
-                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
-                </div>
+                <ng-template #addButton>
+                  <div class="counter_section">
+                    <ion-button fill="solid" color="none" size="small" expand="block" (click)="addToCart(product)">{{ 'ItemDetails.add' |
+                      translate
+                      }}</ion-button>
+                      </div>
+                </ng-template>
               </ion-card-content>
             </ion-card>
           </ion-col>
@@ -151,16 +95,38 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<ion-footer>
+<!-- <ion-footer>
   <ion-card class="cart-summary-card" [routerLink]="['/cart']">
     <ion-grid>
       <ion-row class="align-center">
         <ion-col size="auto" class="card_img">
-          <img src="assets/images/ovation_item2.png" alt="Product" class="product-image" />
+          <img src="assets/images/item3.png" alt="Product" class="product-image" />
         </ion-col>
         <ion-col class="ion-text-start">
           <p class="item-count">2 Items</p>
           <p class="price">{{ 'Currency.currency' | translate }}25</p>
+        </ion-col>
+        <ion-col size="auto" class="view-cart">
+          <ion-button fill="clear" class="view-cart-button">
+            View Cart
+            <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-footer> -->
+
+<ion-footer *ngIf="cartCount > 0">
+  <ion-card class="cart-summary-card" [routerLink]="['/cart']">
+    <ion-grid>
+      <ion-row class="align-center">
+        <ion-col size="auto" class="card_img">
+          <img src="assets/images/ovation_icon.png" alt="Product" class="product-image" />
+        </ion-col>
+        <ion-col class="ion-text-start">
+          <p class="item-count">{{ cartCount }} Items</p>
+          <p class="price">{{ 'Currency.currency' | translate }} {{orderTotal + tax | number:'1.0-0'}}</p>
         </ion-col>
         <ion-col size="auto" class="view-cart">
           <ion-button fill="clear" class="view-cart-button">

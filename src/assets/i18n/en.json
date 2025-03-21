@@ -45,8 +45,10 @@
     "Search":
     {
        "recentsearch": "Recent Search",
+       "topsearch": "Top Search",
        "trendingnow": "Trending Now",
-       "showingresultfor": "Showing Result for"
+       "showingresultfor": "Showing Result for",
+       "clear": "Clear"
     },
     "Cart":
     {

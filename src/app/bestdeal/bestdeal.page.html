@@ -12,44 +12,59 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row class="best_deal_section">
-      <ion-col size="6" class="align_center">
+   
+      <ion-col size="6" *ngFor="let item of randomItems">
         <ion-card class="product-card">
           <ion-card-header>
-            <ion-img class="product-image" src="assets/images/ovation_item2.png"></ion-img>
-            <ion-icon name="heart" class="favorite-icon"></ion-icon>
+            <ion-img class="product-image" [src]="item.image || 'assets/images/item5.png'"  (click)="itemDetails(item.id,item)"></ion-img>
+            <ion-icon [name]="isInWishlist(item.id) ? 'heart' : 'heart-outline'" [class.favorite-icon]="true"
+              [class.active]="isInWishlist(item.id)" (click)="toggleWishlist(item.id)">
+            </ion-icon>
           </ion-card-header>
-        
+      
           <ion-card-content>
-            <h3 class="product-name">Neutraceuticals</h3>
-            <!-- <p class="product-quantity">500 ml</p> -->
+            <h3 class="product-name">{{ item.name.length > 30 ? (item.name | slice:0:30) + '...' : item.name }}</h3>
+              <!-- <p class="product-quantity">1 L</p> -->
             <div class="price-container">
-              <div class="price_div">
-                <span class="current-price">{{ 'Currency.currency' | translate }}120.00</span>
-                <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
-              </div>
-              <div>
-                <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
-              </div>
               
+              <div class="price_div">
+                <span class="current-price">{{ 'Currency.currency' | translate }}{{ ((+item.price || 0) + ((+item.price || 0) * (+item.taxPercentage || 0) / 100))
+                | number:'1.0-0' }}</span>
+                <!-- <span class="old-price">{{ 'Currency.currency' | translate }}{{item.mrp}}</span> -->
+              </div>
             </div>
-            
+            <div class="counter_section" *ngIf="getItemQuantity(item.id) > 0; else addButton">
+              <ion-button fill="solid" color="none" size="small" class="added_btn" (click)="decrementItem(item.id)"><ion-icon
+                  name="remove-outline"></ion-icon></ion-button>
+              <p>{{ getItemQuantity(item.id) }}</p>
+              <ion-button fill="solid" color="none" size="small" class="added_btn" (click)="incrementItem(item.id)"><ion-icon
+                  name="add-outline"></ion-icon></ion-button>
+            </div>
+            <ng-template #addButton>
+              <div class="counter_section">
+                <ion-button fill="solid" color="none" size="small" expand="block" (click)="addToCart(item)">{{ 'ItemDetails.add' | translate
+                  }}</ion-button>
+                </div>
+            </ng-template>
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <ion-col size="6" class="align_center">
+      
+
+      <!-- <ion-col size="6" class="align_center">
         <ion-card class="product-card">
           <ion-card-header>
-            <ion-img class="product-image" src="assets/images/ovation_item3.png"></ion-img>
+            <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
             <ion-icon name="heart" class="favorite-icon"></ion-icon>
           </ion-card-header>
         
           <ion-card-content>
-            <h3 class="product-name">Neutraceuticals Ovation</h3>
-            <!-- <p class="product-quantity">500 ml</p> -->
+            <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+            <p class="product-quantity">500 ml</p>
             <div class="price-container">
               <div class="price_div">
-                <span class="current-price">{{ 'Currency.currency' | translate }}299.00</span>
-                <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
+                <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
               </div>
             <div>
               <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
@@ -63,17 +78,17 @@
       <ion-col size="6" class="align_center">
         <ion-card class="product-card">
           <ion-card-header>
-            <ion-img class="product-image" src="assets/images/ovation_item4.png"></ion-img>
+            <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
             <ion-icon name="heart" class="favorite-icon"></ion-icon>
           </ion-card-header>
         
           <ion-card-content>
-            <h3 class="product-name">Neutraceuticals</h3>
-            <!-- <p class="product-quantity">500 ml</p> -->
+            <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+            <p class="product-quantity">500 ml</p>
             <div class="price-container">
               <div class="price_div">
-                <span class="current-price">{{ 'Currency.currency' | translate }}399.00</span>
-                <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
+                <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
               </div>
             <div>
               <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
@@ -87,17 +102,17 @@
       <ion-col size="6" class="align_center">
         <ion-card class="product-card">
           <ion-card-header>
-            <ion-img class="product-image" src="assets/images/ovation_item5.png"></ion-img>
+            <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
             <ion-icon name="heart" class="favorite-icon"></ion-icon>
           </ion-card-header>
         
           <ion-card-content>
-            <h3 class="product-name">Eye Drop</h3>
-            <!-- <p class="product-quantity">500 ml</p> -->
+            <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+            <p class="product-quantity">500 ml</p>
             <div class="price-container">
               <div class="price_div">
-                <span class="current-price">{{ 'Currency.currency' | translate }}120.00</span>
-                <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
+                <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
               </div>
             <div>
               <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
@@ -107,7 +122,29 @@
             
           </ion-card-content>
         </ion-card>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer *ngIf="cartCount > 0">
+  <ion-card class="cart-summary-card" [routerLink]="['/cart']">
+    <ion-grid>
+      <ion-row class="align-center">
+        <ion-col size="auto" class="card_img">
+          <img src="assets/images/cart_icon.png" alt="Product" class="product-image" />
+        </ion-col>
+        <ion-col class="ion-text-start">
+          <p class="item-count">{{ cartCount }} Items</p>
+          <p class="price">{{ 'Currency.currency' | translate }} {{orderTotal + tax | number:'1.0-0'}}</p>
+        </ion-col>
+        <ion-col size="auto" class="view-cart">
+          <ion-button fill="clear" class="view-cart-button">
+            View Cart
+            <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-footer>

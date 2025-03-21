@@ -4,14 +4,15 @@ import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from './header/header.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, FooterComponent,],
   imports: [
     CommonModule,
     IonicModule,
     TranslateModule,
     RouterModule
   ],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, FooterComponent,],
 }) 
 export class SharedModule {}

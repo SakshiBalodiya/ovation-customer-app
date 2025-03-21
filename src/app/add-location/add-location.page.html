@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row class="header">
+      <ion-col class="ion-text-center">
+        <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']" class="ion-float-left"></ion-icon>
+        <h1>{{ 'AddAddress.addaddress' | translate }}</h1>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar [debounce]="2000" [(ngModel)]="searchQuery" (ionInput)="onSearchChange($event)"
+    placeholder="Search location..." class="custom-searchbar"></ion-searchbar>
+
+
+  <ion-list *ngIf="suggestions.length > 0 && searchQuery">
+    <ion-item *ngFor="let suggestion of suggestions" (click)="selectPlace(suggestion)">
+      <ion-label>
+        <h2>{{ suggestion.structured_formatting.main_text }}</h2>
+        <p>{{ suggestion.structured_formatting.secondary_text }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Locate Me Button -->
+  <h5 class="ion-text-center current" (click)="locateMe()">
+    <ion-icon name="locate"></ion-icon>
+    Use Current Location
+  </h5>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- Selected Address Display -->
+  <!-- <div class="address-box">
+    <strong>Delivery Address:</strong>
+    <p>{{ selectedPlace ? selectedPlace + ', ' + selectedAddress : selectedAddress }}</p>
+  </div> -->
+  <div class="address-box">
+    <strong>Delivery Address:</strong>
+
+    <ng-container *ngIf="selectedAddress && selectedAddress !== 'Fetching location...'; else loadingSkeleton">
+      <p>{{ selectedPlace ? selectedPlace + ', ' + selectedAddress : selectedAddress }}</p>
+    </ng-container>
+
+    <ng-template #loadingSkeleton>
+      <ion-skeleton-text animated style="width: 80%; height: 20px; border-radius: 4px;"></ion-skeleton-text>
+      <ion-skeleton-text animated style="width: 80%; height: 20px; border-radius: 4px;"></ion-skeleton-text>
+    </ng-template>
+  </div>
+
+
+  <!-- Nearby Places List -->
+  <!-- <div *ngIf="nearbyPlaces.length > 0">
+    <h3>Nearby Restaurants</h3>
+    <ion-list>
+      <ion-item *ngFor="let place of nearbyPlaces">
+        {{ place.description || "Unnamed Place" }}
+      </ion-item>
+    </ion-list>
+  </div> -->
+  <div style="margin-bottom: 20px;">
+    <ion-button expand="block" color="primary" [routerLink]="['/add-address']"
+      [queryParams]="{address: selectedPlace ? selectedPlace + ', ' + selectedAddress : selectedAddress, lat: userLat, lng: userLng}">
+      Add address details <ion-icon name="caret-forward"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

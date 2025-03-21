@@ -8,14 +8,14 @@
    
     <ion-row>
       <ion-col size="auto" class="user_img">
-        <div class="profile-image-container">
+        <!-- <div class="profile-image-container">
           <img src="assets/images/user_img.jpg" alt="Profile Picture" class="profile-image" />
-          <!-- <ion-icon name="create-outline" class="edit-icon"></ion-icon> -->
-        </div>
+
+        </div> -->
       </ion-col>
       <ion-col class="ion-text-start user_nameEmail">
-        <h2>Smith Mate</h2>
-        <p class="email">smithmate&#64;example.com</p>
+        <h2>{{name}}</h2>
+        <p class="email">{{email}}</p>
       </ion-col>
     </ion-row>
   </div>
@@ -55,7 +55,7 @@
       </ion-row> -->
     </ion-col>
     <ion-row class="logout">
-      <ion-button expand="block" class="logout-button" [routerLink]="['']">
+      <ion-button expand="block" class="logout-button" (click)="logout()">
         <ion-icon name="log-out-outline" slot="start"></ion-icon>
         Logout
       </ion-button>

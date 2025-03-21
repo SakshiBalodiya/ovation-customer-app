@@ -12,3 +12,11 @@ ion-tab-bar{
 // ion-tab-button.active-tab ion-img{
 //   filter: brightness(0) saturate(100%) invert(20%) sepia(96%) saturate(2021%) hue-rotate(336deg) brightness(94%) contrast(91%);
 // }
+.wishlist-icon {
+  filter: grayscale(100%); /* Default - Inactive (Black & White) */
+  transition: filter 0.3s ease-in-out;
+}
+
+.wishlist-icon.active {
+  filter: brightness(0) saturate(100%) invert(68%) sepia(72%) saturate(4404%) hue-rotate(138deg) brightness(94%) contrast(98%);
+}

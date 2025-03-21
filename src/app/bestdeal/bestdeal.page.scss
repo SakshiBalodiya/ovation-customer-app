@@ -47,16 +47,16 @@ ion-toolbar {
   
   .favorite-icon {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 8px;
+    right: 8px;
     font-size: 20px;
     color: #888;
     cursor: pointer;
   }
   
-  .favorite-icon:hover {
-    color: #ff5a5f;
-  }
+  // .favorite-icon:hover {
+  //   color: #ff5a5f;
+  // }
   
   .product-name {
     font-size: 14px;
@@ -64,7 +64,6 @@ ion-toolbar {
     margin: 10px 0 4px;
     line-height: 1.2;
     color: #333;
-    height: 32px;
   }
   
   .product-quantity {
@@ -115,4 +114,99 @@ ion-toolbar {
 .align_center {
   display: flex;
   justify-content: center;
+}
+
+.favorite-icon {
+  font-size: 24px;
+  color: grey;
+  cursor: pointer;
+}
+
+.favorite-icon.active {
+  color: var(--ion-color-primary);
+}
+// .counter_section {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 10px;
+// }
+
+// .counter_section .added_btn {
+//   margin-top: 0px !important;
+//   max-width: 45px;
+//   height: 40px;
+//   width: 45px;
+//   padding: 0px;
+// }
+
+.counter_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* Ensure it takes full width */
+}
+
+.counter_section .added_btn {
+  max-width: 45px;
+  height: 40px;
+  width: 45px;
+  padding: 0px;
+}
+
+.counter_section .added_btn:first-child {
+  margin-left: 5px;
+  /* Left align "-" button */
+}
+
+.counter_section .added_btn:last-child {
+  margin-right: 5px;
+  /* Right align "+" button */
+}
+
+ion-footer {
+  box-shadow: none;
+}
+
+.cart-summary-card {
+  background-color: var(--ion-color-primary);
+  border-radius: 15px;
+  color: white;
+  // padding: 10px;
+  margin: 10px;
+}
+
+.cart-summary-card .align-center {
+  align-items: center;
+  gap: 10px;
+  padding: 0px 10px;
+}
+
+.card_img img {
+  height: 28px;
+  width: auto;
+  border-radius: 8px;
+  margin: 0px auto 0px;
+}
+
+.item-count {
+  font-size: 14px;
+  margin: 0;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+.view-cart-button {
+  --color: white;
+  font-weight: bold;
+  padding: 0;
+}
+
+.card_img {
+  background-color: #fff;
+  border-radius: 10px;
 }

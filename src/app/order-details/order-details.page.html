@@ -3,47 +3,68 @@
     <ion-buttons slot="start"  [routerLink]="['/tabs/tab2']">
       <ion-icon name="chevron-back-outline"></ion-icon>
     </ion-buttons>
-    <ion-title>Order #181838970207518</ion-title>
+    <ion-title>#{{orderno}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="order-container">
     <div class="order-summary">
-      <p>Delivered, 1 Item, ₹299</p>
+      <p>{{orderStatus}}, {{itemCount}} Items, ₹ {{total}}</p>
     </div>
 
     <div class="address-section">
-      <ion-icon name="location-outline" color="medium"></ion-icon>
+      <!-- <ion-icon name="location-outline" color="medium"></ion-icon> -->
       <div>
-        <strong>Home</strong><br />
-        6391 Celina, Delaware 1099
+        <strong>Address:</strong><br />
+        {{address}}
       </div>
     </div>
+
+    <ion-row class="progress-bar-container">
+      <ion-col class="step"
+        [ngClass]="{'active': orderStatus == 'placed' || orderStatus == 'accepted' || orderStatus == 'shipped' || orderStatus == 'delivered'}">
+        <div class="circle"></div>
+        <p>Placed</p>
+      </ion-col>
+      <ion-col class="step"
+        [ngClass]="{'active': orderStatus == 'accepted' || orderStatus == 'shipped' || orderStatus == 'delivered'}">
+        <div class="circle"></div>
+        <p>Accepted</p>
+      </ion-col>
+      <ion-col class="step" [ngClass]="{'active': orderStatus == 'shipped' || orderStatus == 'delivered'}">
+        <div class="circle"></div>
+        <p>Shipped</p>
+      </ion-col>
+      <ion-col class="step" [ngClass]="{'active': orderStatus == 'delivered'}">
+        <div class="circle"></div>
+        <p>Delivered</p>
+      </ion-col>
+    </ion-row>
 
     <div class="bill-details">
       <h3>Bill Details</h3>
-      <div class="bill-item item_name">
-        <div>Neutraceuticals</div>
-        <div>₹299.00</div>
+      <div class="bill-item item_name" *ngFor="let order of orderdetails.items">
+        <div class="itemname">{{order.name}} X {{order.amount}}</div>
+        <div class="ion-text-end">₹ {{+order.total + +order.tax}}</div>
       </div>
       <div class="bill-item">
-        <div>Item Total</div>
-        <div>₹299.00</div>
+        <div class="itemname">Item Total</div>
+        <div>₹{{+total+ +tax}}</div>
       </div>
       <div class="bill-item">
-        <div>Delivery Fee</div>
+        <div class="itemname">Delivery Fee</div>
         <div class="free">FREE</div>
       </div>
-      <div class="bill-item">
+      <!-- <div class="bill-item">
         <div>Taxes</div>
-        <div>₹10.41</div>
-      </div>
+        <div>₹ 0.00</div>
+      </div> -->
       <div class="bill-item total">
-        <div>Bill Total</div>
-        <div>₹309.41</div>
+        <div class="itemname">Bill Total</div>
+        <div>₹{{+total+ +tax}}</div>
       </div>
     </div>
 
-    <ion-button expand="block" color="none" class="reOrder">Reorder</ion-button>
+    <ion-button expand="block" color="none" class="reOrder" [routerLink]="['/tabs/tab1']">Continue Shopping</ion-button>
   </div>
 </ion-content>

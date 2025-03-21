@@ -101,7 +101,6 @@ ion-grid{
     position: relative;
     text-align: left;
     margin: 0px;
-    width: 178px;
   }
   
   .product-card ion-card-header {
@@ -134,7 +133,7 @@ ion-grid{
   
   .product-name {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: bold;
     margin: 10px 0 4px;
     line-height: 1.2;
     color: #333;
@@ -188,6 +187,7 @@ ion-grid{
   .address_section{
     display: flex;
     gap: 10px;
+    max-width: 45px;
   }
   .address_section .home_icon{
     width: auto;
@@ -198,18 +198,20 @@ ion-grid{
     padding: 8px;
     border-radius: 8px;
     align-items: center;
+    margin-left: 5px;
 
     ion-img{
         height: 26px;
 
     }
   }
-  .address_section .change{
+  .change{
     p{
         margin: 0px;
         color: var(--ion-color-primary);
         font-size: 16px;
         font-weight: 400;
+        margin-right: 5px;
     }
   }
   .address_title{
@@ -306,7 +308,7 @@ ion-grid{
   margin: 12px 10px 0px;
 }
 .item_name{
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   margin: 0px;
 }
@@ -324,4 +326,35 @@ ion-grid{
   gap: 6px;
   align-items: center;
 
+}
+.empty-cart-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.img {
+  width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.home {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.empty-cart-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.deliverable{
+  color: red;
+  margin-bottom: 0;
+  background-color: #fffbf1;
+  border-radius: 10px;
+  padding: 5px;
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -10,12 +11,13 @@ import { RegistrationPage } from './registration.page';
 import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   imports: [
-    CommonModule,
+   CommonModule,
     FormsModule,
     IonicModule,
     RegistrationPageRoutingModule,
-    TranslateModule
+    TranslateModule,
+    ReactiveFormsModule, 
   ],
   declarations: [RegistrationPage]
 })
-export class RegistrationPageModule {}
+export class RegistrationPageModule { }

@@ -1,10 +1,11 @@
 <ion-header>
   <ion-toolbar>
   <ion-row class="header">
-    <ion-col>
-      <ion-icon name="chevron-back-outline" [routerLink]="['/category']"></ion-icon>
+    <ion-col class="ion-text-center">
+      <ion-icon name="chevron-back-outline" [routerLink]="['/category']" class="ion-float-left"></ion-icon>
       <h1>{{ 'ItemDetails.itemdetails' | translate }}</h1>
-      <ion-icon name="heart" class="like"></ion-icon>
+      <!-- <ion-icon name="heart" class="like"></ion-icon> -->
+      <ion-icon name="bag-handle-outline" [routerLink]="['/cart']"></ion-icon>
     </ion-col>
   </ion-row>
 </ion-toolbar>
@@ -15,25 +16,25 @@
       <swiper-container  slides-per-view="1" style="width: 100%;" pagination="true">
         <swiper-slide>
           <ion-col class="slider-item">
-            <ion-img src="assets/images/ovation_item2.png"></ion-img>
+            <ion-img [src]="image || 'assets/images/milk.jpg'"></ion-img>
           </ion-col>
         </swiper-slide>
         <swiper-slide>
           <ion-col class="slider-item">
-            <ion-img src="assets/images/ovation_item4.png"></ion-img>
+            <ion-img [src]="image || 'assets/images/milk.jpg'"></ion-img>
           </ion-col>
         </swiper-slide>
         <swiper-slide>
           <ion-col class="slider-item">
-            <ion-img src="assets/images/ovation_item3.png"></ion-img>
+            <ion-img [src]="image || 'assets/images/milk.jpg'"></ion-img>
           </ion-col>
         </swiper-slide>
       </swiper-container>
     </ion-row>
     <ion-row>
-      <h2>Neutraceuticals Ovation</h2>
+      <h2>{{name}}</h2>
     </ion-row>
-    <ion-row class="rating">
+    <!-- <ion-row class="rating">
       <ion-icon name="star" class="selected"></ion-icon>
       <ion-icon name="star" class="selected"></ion-icon>
       <ion-icon name="star" class="selected"></ion-icon>
@@ -41,17 +42,22 @@
       <ion-icon name="star-outline"></ion-icon>
       <p>4.0 (146 {{ 'ItemDetails.reviews' | translate }})</p>
     
-    </ion-row>
+    </ion-row> -->
     <ion-row class="price">  
       <ion-col class="price_col">
-        <span class="current-price">{{ 'Currency.currency' | translate }}120.00</span>
-        <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
-        <ion-chip>10% OFF</ion-chip>
+        <span class="current-price">{{ 'Currency.currency' | translate }} {{ ((+price || 0) + ((+price || 0) * (+taxPercentage || 0) / 100))
+        | number:'1.0-0' }}</span>
+        <span class="old-price">{{ 'Currency.currency' | translate }} {{mrp}}</span>
+        <!-- <ion-chip>10% OFF</ion-chip> -->
+        <ion-chip *ngIf="calculateDiscountPercentage(mrp, price) > 0">
+          {{ calculateDiscountPercentage(mrp, price) }}% OFF
+        </ion-chip>
       </ion-col>
     </ion-row>
-    <ion-row class="item_details"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-      incididunt ut labore et dolore magna aliqua. <span>Read More</span></p></ion-row>
-    <ion-row>
+    <!-- <ion-row class="item_details"><p>{{description}}<span>Read More</span></p></ion-row> -->
+    <ion-row><h4>Description</h4></ion-row>
+    <ion-row class="item_details"><p>{{description}}</p></ion-row>
+    <!-- <ion-row>
       <h2>{{ 'ItemDetails.reviewsandratings' | translate }}</h2>
     </ion-row>
     <ion-row>
@@ -88,68 +94,61 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
         </p>
         <div class="review-images">
-          <ion-img src="assets/images/ovation_item2.png" alt="Review Image 1" ></ion-img>
-          <ion-img src="assets/images/ovation_item2.png" alt="Review Image 2"></ion-img>
+          <ion-img src="assets/images/item_6.png" alt="Review Image 1" ></ion-img>
+          <ion-img src="assets/images/item_6.png" alt="Review Image 2"></ion-img>
         </div>
       </ion-card-content>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
       <h2>{{ 'ItemDetails.similarproducts' | translate }}</h2>
     </ion-row>
     <ion-row>
+      
       <swiper-container class="mySwiper" slides-per-view="1.5" style="width: 100%;">
-        <swiper-slide>
+        <swiper-slide *ngFor="let item of filteredItems">
           <ion-row class="best_deal_section">
             <ion-card class="product-card">
               <ion-card-header>
-                <ion-img class="product-image" src="assets/images/ovation_item2.png"></ion-img>
-                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
+                <ion-img class="product-image" [src]="item.image || 'assets/images/milk.jpg'"  (click)="itemDetails(item.id,item)"></ion-img>
+                <!-- <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isInWishlist(item.id) }"
+                        (click)="toggleWishlist(item.id)">
+                      </ion-icon> -->
               </ion-card-header>
-            
+      
               <ion-card-content>
-                <h3 class="product-name">Neutraceuticals</h3>
-                <!-- <p class="product-quantity">500 ml</p> -->
+                <h3 class="product-name">{{ item.name.length > 30 ? (item.name | slice:0:30) + '...' : item.name }}</h3>
+                <!-- <p class="product-quantity">{{ item.quantity }}</p> -->
                 <div class="price-container">
-                  <div class="price_div_trending">
-                    <span class="current-price">{{ 'Currency.currency' | translate }}120.00</span>
-                    <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
+                  <div class="price_div">
+                    <p class="product-quantity">1 L</p>
+      
                   </div>
-                <div>
-                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
+                  <div class="price_value">
+                    <p class="current-price">{{ 'Currency.currency' | translate }}{{item.price}}</p>
+                    <!-- <p class="old-price">{{ 'Currency.currency' | translate }}{{item.price}}</p> -->
+                  </div>
                 </div>
-                  
+                <!-- <div>
+                          <ion-button fill="solid" color="none" size="small" expand="block"
+                            (click)="addToCart(item)">Add</ion-button>
+                        </div> -->
+                <div class="counter_section" *ngIf="getItemQuantity(item.id) > 0; else addButton">
+                  <ion-button fill="solid" color="none" size="small" class="added_btn"
+                    (click)="decrementItem(item.id)"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                  <p>{{ getItemQuantity(item.id) }}</p>
+                  <ion-button fill="solid" color="none" size="small" class="added_btn"
+                    (click)="incrementItem(item.id)"><ion-icon name="add-outline"></ion-icon></ion-button>
                 </div>
-                
+                <ng-template #addButton>
+                  <div class="counter_section">
+                    <ion-button fill="solid" color="none" size="small" expand="block" (click)="addToCart(item)">{{
+                      'ItemDetails.add' |
+                      translate
+                      }}</ion-button>
+                  </div>
+                </ng-template>
               </ion-card-content>
             </ion-card>
-            
-          </ion-row>
-        </swiper-slide>
-        <swiper-slide>
-          <ion-row class="best_deal_section">
-            <ion-card class="product-card">
-              <ion-card-header>
-                <ion-img class="product-image" src="assets/images/ovation_item3.png"></ion-img>
-                <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
-              </ion-card-header>
-            
-              <ion-card-content>
-                <h3 class="product-name">Neutraceuticals Ovation</h3>
-                <!-- <p class="product-quantity">500 ml</p> -->
-                <div class="price-container">
-                  <div class="price_div_trending">
-                    <span class="current-price">{{ 'Currency.currency' | translate }}120.00</span>
-                    <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
-                  </div>
-                <div>
-                  <ion-button fill="solid" color="none" size="small" expand="block">{{ 'ItemDetails.add' | translate }}</ion-button>
-                </div>
-                  
-                </div>
-                
-              </ion-card-content>
-            </ion-card>
-            
           </ion-row>
         </swiper-slide>
       </swiper-container>
@@ -160,7 +159,7 @@
 <ion-footer>
   <ion-row class="align-center static_footer">
     <!-- Quantity Control -->
-    <ion-col size="4" class="quantity-control">
+    <!-- <ion-col size="4" class="quantity-control">
       <ion-button fill="clear" color="none">
         <ion-icon name="remove-outline"></ion-icon>
       </ion-button>
@@ -168,14 +167,31 @@
       <ion-button fill="clear" color="none">
         <ion-icon name="add-outline"></ion-icon>
       </ion-button>
+    </ion-col> -->
+    <ion-col size="6">
+      <p class="current-price" style="margin: 0;">{{ 'Currency.currency' | translate }} {{price}}</p>
+      <span class="old-price">{{ 'Currency.currency' | translate }} {{mrp}}</span>
+      <!-- <ion-chip>10% OFF</ion-chip> -->
+      <!-- <ion-chip *ngIf="calculateDiscountPercentage(mrp, price) > 0">
+        {{ calculateDiscountPercentage(mrp, price) }}% OFF
+      </ion-chip> -->
     </ion-col>
 
     <!-- Add to Cart Button -->
-    <ion-col size="8" class="add-to-cart">
-      <ion-button expand="block" class="add-cart-button" [routerLink]="['/cart']">
+    <ion-col size="6" class="add-to-cart" *ngIf="getItemQuantity(itemDetail.id) == 0">
+      <ion-button expand="block" class="add-cart-button" (click)="addToCart(itemDetail)">
         {{ 'ItemDetails.addtocart' | translate }}
-        <span class="price-divider"></span>
-        <span class="amount">{{ 'Currency.currency' | translate }}12</span>
+        <!-- <span class="price-divider"></span>
+        <span class="amount">{{ 'Currency.currency' | translate }}</span> -->
+      </ion-button>
+    </ion-col>
+    <ion-col size="6" class="quantity-control" *ngIf="getItemQuantity(itemDetail.id) > 0">
+      <ion-button fill="clear" color="none" (click)="decrementItem(itemDetail.id)">
+        <ion-icon name="remove-outline"></ion-icon>
+      </ion-button>
+      <span class="quantity">{{ getItemQuantity(itemDetail.id) }}</span>
+      <ion-button fill="clear" color="none" (click)="incrementItem(itemDetail.id)">
+        <ion-icon name="add-outline"></ion-icon>
       </ion-button>
     </ion-col>
   </ion-row>

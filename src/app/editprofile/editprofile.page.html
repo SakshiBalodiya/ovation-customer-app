@@ -13,62 +13,67 @@
     <!-- Profile Image -->
     <ion-row class="ion-justify-content-center">
       <ion-col size="12" class="ion-text-center">
-        <div class="profile-image-container">
+        <!-- <div class="profile-image-container">
           <img src="assets/images/user_img.jpg" alt="Profile Picture" class="profile-image" />
           <ion-icon name="create-outline" class="edit-icon"></ion-icon>
-        </div>
+        </div> -->
       </ion-col>
     </ion-row>
 
     <!-- Name Input -->
-    <ion-row class="topbottom_space">
-      <ion-col size="12">
-        <label class="input-label">Name</label>
-        <div class="input-container">
-         
-          <ion-input type="text" value="Smith Mate" class="custom-input" placeholder="Enter your name"></ion-input>
-        </div>
-      </ion-col>
-    </ion-row>
-
-    <!-- Email Input -->
-    <ion-row class="topbottom_space">
-      <ion-col size="12">
-        <label class="input-label">Email Address</label>
-        <div class="input-container">
-          
-          <ion-input type="email" value="smithmate@example.com" class="custom-input" placeholder="Enter your email"></ion-input>
-        </div>
-      </ion-col>
-    </ion-row>
-
-    <!-- Mobile Number Input -->
-    <ion-row class="topbottom_space">
-      <ion-col size="12">
-        <label class="input-label">Contact Number</label>
-        <div class="input-container">
-          
-          <ion-input type="tel" value="8902555010" maxlength="10" class="custom-input" placeholder="Enter your contact number"></ion-input>
-        </div>
-      </ion-col>
-    </ion-row>
-
-    <!-- Address Input -->
-    <ion-row class="topbottom_space">
-      <ion-col size="12">
-        <label class="input-label">Enter Address</label>
-        <div class="input-container">
-          
-          <ion-textarea type="text" value="8502 Preston Rd. Inglewood, USA" class="custom-input" placeholder="Enter your address"></ion-textarea>
-        </div>
-      </ion-col>
-    </ion-row>
-
-    <!-- Update Button -->
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12">
-        <ion-button color="none">Update</ion-button>
-      </ion-col>
-    </ion-row>
+    <form class="editprofile">
+      <!-- Name Input -->
+      <ion-row class="topbottom_space">
+        <ion-col size="12">
+          <label class="input-label">Name</label>
+          <div class="input-container">
+            <ion-input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="Enter your name"
+              (ionBlur)="validateName()"></ion-input>
+          </div>
+          <p *ngIf="nameError" class="error-text">{{ nameError }}</p>
+        </ion-col>
+      </ion-row>
+    
+      <!-- Email Input -->
+      <ion-row class="topbottom_space">
+        <ion-col size="12">
+          <label class="input-label">Email Address</label>
+          <div class="input-container">
+            <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Enter your email"
+              (ionBlur)="validateEmail()"></ion-input>
+          </div>
+          <p *ngIf="emailError" class="error-text">{{ emailError }}</p>
+        </ion-col>
+      </ion-row>
+    
+      <!-- Mobile Number Input -->
+      <ion-row class="topbottom_space">
+        <ion-col size="12">
+          <label class="input-label">Contact Number</label>
+          <div class="input-container">
+            <ion-input type="tel" [(ngModel)]="contact" [ngModelOptions]="{standalone: true}" maxlength="10"
+              placeholder="Enter your contact number" (ionBlur)="validateContact()"></ion-input>
+          </div>
+          <p *ngIf="contactError" class="error-text">{{ contactError }}</p>
+        </ion-col>
+      </ion-row>
+    
+      <!-- <ion-row class="topbottom_space">
+            <ion-col size="12">
+              <label class="input-label">Language</label>
+              <div class="input-container">
+                <ion-input type="tel" [(ngModel)]="contact" [ngModelOptions]="{standalone: true}" maxlength="10"
+                  placeholder="Enter your contact number" (ionBlur)="validateContact()"></ion-input>
+              </div>
+            </ion-col>
+          </ion-row> -->
+    
+      <!-- Update Button -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <ion-button (click)="updateProfile()" color="none" [disabled]="isFormInvalid()">Update</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
   </ion-grid>
 </ion-content>
