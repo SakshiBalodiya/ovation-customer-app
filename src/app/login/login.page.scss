@@ -1,11 +1,14 @@
+.background {
+  --background: url(/assets/images/ovation_loginbg.png) 0 0/100% 100% no-repeat;
+}
 // changed here
 .header-image{
     height: 80px;
   }
-  ion-content {
-    background-color: #fff !important;
+  // ion-content {
+  //   background-color: #fff !important;
 
-  }
+  // }
   h1 {
     font-size: 1.5rem;
     margin: 0px 0px 6px 0px;
@@ -23,9 +26,9 @@
   }
   .div_align_center {
     // height:100%;
-    background-color: var(--ion-color-primary-contrast);
+    // background-color: var(--ion-color-primary-contrast);
     overflow-y: scroll;
-    height: 88%;
+    height: 100%;
     display: flex;
     align-items: center;
   }
@@ -48,7 +51,7 @@
     }
 
     .img {
-      width: 50%;
+      width: 256px;
       display: block;
     margin-left: auto;
     margin-right: auto;
@@ -83,7 +86,7 @@
   
  
   .forgot_btn{
-   color: #c72c3c; 
+   color: var(--ion-color-primary); 
    padding-left: 4px;
    text-decoration: underline;
   //  border-bottom: 1px solid #ec4c4c;
