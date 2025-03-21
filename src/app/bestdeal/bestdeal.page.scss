@@ -47,8 +47,8 @@ ion-toolbar {
   
   .favorite-icon {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 4px;
+    right: 4px;
     font-size: 20px;
     color: #888;
     cursor: pointer;
@@ -64,6 +64,7 @@ ion-toolbar {
     margin: 10px 0 4px;
     line-height: 1.2;
     color: #333;
+    height: 32px;
   }
   
   .product-quantity {

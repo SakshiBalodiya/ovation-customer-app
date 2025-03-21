@@ -4,7 +4,7 @@
     <ion-col size="1"><ion-icon name="location-outline"></ion-icon></ion-col>
     <ion-col size="10" class="address" (click)="address()">
       <h1>Home <ion-icon name="chevron-down-outline" class="down_arrow"></ion-icon></h1>
-      <p>B-177 Nityanand Nagar</p>
+      <p>6391 Celina, Delaware 1099</p>
     </ion-col>
     <ion-col size="1" [routerLink]="['/cart']">
       <ion-icon name="bag-handle-outline"></ion-icon>
@@ -19,7 +19,7 @@
         <ion-searchbar></ion-searchbar>
       </ion-col>
     </ion-row>
-    <ion-row  class="align_center mb-10">
+    <ion-row  class="align_center">
       <ion-col>
         <h1>{{ 'HOME.shopbycategory' | translate }}</h1>
       </ion-col>
@@ -30,6 +30,32 @@
     <ion-row>
       <ion-col size="4" [routerLink]="['/category']">
         <ion-card class="item_card">
+          <ion-img src="assets/images/eyedrop.png"></ion-img>
+          <ion-card-content>
+            <p>Eye Drops</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/Neutraceuticals.png"></ion-img>
+          <ion-card-content>
+            <p>Neutraceuticals</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/item1.png"></ion-img>
+          <ion-card-content>
+            <p>Cold Drinks & Juices</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col> -->
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
           <ion-img src="assets/images/item1.png"></ion-img>
           <ion-card-content>
             <p>Cold Drinks & Juices</p>
@@ -52,40 +78,14 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="4" [routerLink]="['/category']">
-        <ion-card class="item_card">
-          <ion-img src="assets/images/item1.png"></ion-img>
-          <ion-card-content>
-            <p>Cold Drinks & Juices</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="4" [routerLink]="['/category']">
-        <ion-card class="item_card">
-          <ion-img src="assets/images/item2.png"></ion-img>
-          <ion-card-content>
-            <p>Instant & Frozen Food</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="4" [routerLink]="['/category']">
-        <ion-card class="item_card">
-          <ion-img src="assets/images/item1.png"></ion-img>
-          <ion-card-content>
-            <p>Cold Drinks & Juices</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+    </ion-row> -->
 
       <ion-card class="promo-card">
         <ion-card-content>
-          <h2>World Food Festival, Bring the world to your Kitchen!</h2>
+          <h2>Boost Your Health with Premium Nutraceuticals!</h2>
           <ion-button expand="block" color="none" class="shop_btn" [routerLink]="['/category']">Shop Now</ion-button>
         </ion-card-content>
-        <ion-img src="assets/images/item1.png"></ion-img>
+        <ion-img src="assets/images/ovation_item2.png"></ion-img>
       </ion-card>
       <ion-row  class="align_center">
         <ion-col>
@@ -100,17 +100,17 @@
           <ion-row class="best_deal_section">
             <ion-card class="product-card">
               <ion-card-header>
-                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+                <ion-img class="product-image" src="assets/images/eyedrop.png"></ion-img>
                 <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
               </ion-card-header>
             
               <ion-card-content>
-                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
-                <p class="product-quantity">500 ml</p>
+                <h3 class="product-name">Eye Drops</h3>
+                <!-- <p class="product-quantity">500 ml</p> -->
                 <div class="price-container">
                   <div class="price_div">
-                    <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
-                    <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
+                    <span class="current-price">{{ 'Currency.currency' | translate }}119.00</span>
+                    <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
                   </div>
                 <div>
                   <ion-button fill="solid" color="none" size="small" expand="block" [routerLink]="['/cart']">Add</ion-button>
@@ -127,17 +127,17 @@
           <ion-row class="best_deal_section">
             <ion-card class="product-card">
               <ion-card-header>
-                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
+                <ion-img class="product-image" src="assets/images/Neutraceuticals.png"></ion-img>
                 <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
               </ion-card-header>
             
               <ion-card-content>
-                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
-                <p class="product-quantity">500 ml</p>
+                <h3 class="product-name">Neutraceuticals</h3>
+                <!-- <p class="product-quantity">500 ml</p> -->
                 <div class="price-container">
                   <div class="price_div">
-                    <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
-                    <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
+                    <span class="current-price">{{ 'Currency.currency' | translate }}119.00</span>
+                    <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
                   </div>
                 <div>
                   <ion-button fill="solid" color="none" size="small" expand="block" [routerLink]="['/cart']">Add</ion-button>

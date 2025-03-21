@@ -1,16 +1,12 @@
-<ion-content fullscreen scroll="true">
+<ion-content fullscreen scroll="true" class="background">
   <div class="div_align_center" >
     <ion-grid>
-    
       <ion-row style="gap: 10px;">
         <ion-col size="12" class="ion-justify-center">
-          <ion-img class=" ion-text-center img" src="assets/images/restoji_logo.svg"></ion-img>
+          <ion-img class=" ion-text-center img" src="assets/images/ovationLogo.jpg"></ion-img>
 
         </ion-col>
-        <ion-col size="12" class="ion-text-center">
-          <h1>Welcome Back</h1>
-          <!-- <p>Log in to your account</p> -->
-        </ion-col>
+     
       </ion-row>
   
       <div class="form-div">
@@ -32,7 +28,7 @@
                   
                   <ion-input name="password"  type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter Password" class="input"
                     required>
-                  </ion-input>
+                  </ion-input> 
                   <ion-icon    
                   [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
                   (click)="togglePassword()"
