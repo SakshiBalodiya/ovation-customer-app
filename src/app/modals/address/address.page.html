@@ -1,42 +1,33 @@
 <ion-content>
   <ion-grid>
     <ion-row class="heading add_padding">
-      <ion-col><h1>Select an Address</h1></ion-col>
+      <ion-col>
+        <h1>Select an Address</h1>
+      </ion-col>
     </ion-row>
-    <ion-radio-group value="custom-checked">
-      <!-- Home Address -->
-      <ion-card class="address-card">
+
+    <!-- Radio Group with ngModel -->
+    <ion-radio-group [(ngModel)]="selectedAddressId" (ionChange)="onAddressChange($event)">
+      <ion-card class="address-card" *ngFor="let address of addresses">
         <ion-item lines="none">
-          <ion-radio slot="start" value="home"></ion-radio>
-          <ion-label>
-            <h3>Home</h3>
-            <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
+          <ion-radio slot="start" [value]="address.id.toString()" [disabled]="address.distance > 3000"></ion-radio>
+          <ion-label [ngClass]="{ 'disabled-address': address.distance > 3000 }">
+            <h3 class="capitalize">{{ address.type || 'Address' }}</h3>
+            <p class="capitalize">{{ address.address }}</p>
+            <p class="capitalize" style="color: red;">{{ address.distance / 1000 }} km away from store.</p>
           </ion-label>
-          <ion-icon name="ellipsis-vertical" slot="end" [routerLink]="['/edit-address']"></ion-icon>
-        </ion-item>
-      </ion-card>
-  
-      <!-- Work Address -->
-      <ion-card class="address-card">
-        <ion-item lines="none">
-          <ion-radio slot="start" value="custom"></ion-radio>
-          <ion-label>
-            <h3>Work</h3>
-            <p>2118 Thornridge Cir. Syracuse, Connecticut 35624</p>
-          </ion-label>
-          <ion-icon name="ellipsis-vertical" slot="end" [routerLink]="['/edit-address']"></ion-icon>
+          <ion-icon name="pencil" slot="end" (click)="editAddress(address.id, address)"></ion-icon>
+          <ion-icon name="trash" class="trash" slot="end" (click)="deleteAddress(address.id)"></ion-icon>
         </ion-item>
       </ion-card>
     </ion-radio-group>
-  
-    <!-- Add New Address Button -->
-     <ion-row class="ion-justify-content-center add_padding">
+
+    <ion-row class="ion-justify-content-center add_padding">
       <ion-col size="12" class="ion-text-center">
-        <ion-button  class="add-address-button" color="none" [routerLink]="['/add-address']">
+        <ion-button class="add-address-button" color="none" [routerLink]="['/add-location']">
           + Add New Address
         </ion-button>
       </ion-col>
-     </ion-row>
- 
+    </ion-row>
   </ion-grid>
 </ion-content>

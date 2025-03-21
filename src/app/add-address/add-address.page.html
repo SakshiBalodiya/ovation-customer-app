@@ -2,38 +2,85 @@
   <ion-toolbar>
     <ion-row class="header">
       <ion-col class="ion-text-center">
-        <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']" class="ion-float-left"></ion-icon>
+        <ion-icon name="chevron-back-outline" [routerLink]="['/add-location']" class="ion-float-left"></ion-icon>
         <h1>{{ 'AddAddress.addaddress' | translate }}</h1>
       </ion-col>
     </ion-row>
   </ion-toolbar>
 </ion-header>
-<ion-content scroll-y="false">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <label class="input-label">House / Flat / Block No.</label>
-        <div class="input-container">
-          <ion-textarea type="text" value="" name="address" class="custom-input"></ion-textarea>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <label class="input-label">Save As</label>
-        <div>
-          <ion-chip class="address_type" value="home" [class.active-tab]="selected === 'home'" (click)="setActive('home')">
-            <ion-icon name="home" [class.active-tab]="selected === 'home'" (click)="setActive('home')"></ion-icon>Home</ion-chip>
-          <ion-chip  class="address_type" value="work" [class.active-tab]="selected === 'work'" (click)="setActive('work')">
-            <ion-icon name="briefcase" [class.active-tab]="selected === 'work'" (click)="setActive('work')"></ion-icon>Work</ion-chip>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12">
-        <ion-button color="none">Add Address</ion-button>
-      </ion-col>
-    </ion-row>
+<ion-content>
+  <form [formGroup]="addressForm">
+    <ion-grid>
+      <!-- Address Field -->
+      <ion-row>
+        <ion-col size="12">
+          <label class="input-label">House / Flat / Block No. *</label>
+          <div class="input-container">
+            <ion-textarea formControlName="address" class="custom-input"></ion-textarea>
+          </div>
+          <!-- <ion-text color="danger" *ngIf="addressForm.get('address')?.touched && (addressForm.get('address')?.invalid ?? false) "> -->
+          <ion-text color="danger" *ngIf="addressForm.get('address')?.touched && addressForm.get('address')?.invalid">
+            <span *ngIf="addressForm.get('address')?.errors?.['required']">Address is required.</span>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <label class="input-label">Area / Sector / Locality *</label>
+          <div class="input-container" style="background-color: #fff6ed;">
+            <!-- <ion-textarea formControlName="address2" [(ngModel)]="deliveryAddress" class="custom-input"></ion-textarea> -->
+             <p>{{deliveryAddress}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
 
-  </ion-grid>
+      <!-- Phone Number Field -->
+      <ion-row>
+        <ion-col size="12">
+          <label class="input-label">Contact No. *</label>
+          <div class="input-container">
+            <!-- <ion-input type="tel" maxlength="10" formControlName="phone" value="{{userPhone}}" placeholder="Enter Contact Number"
+              class="input"></ion-input> -->
+              <ion-input type="tel" maxlength="10" formControlName="phone" [value]="userPhone" placeholder="Enter Contact Number"
+                class="input"></ion-input>
+
+          </div>
+          <!-- Phone Number Field -->
+          <!-- <ion-text color="danger" *ngIf="addressForm.get('phone')?.touched && addressForm.get('phone')?.invalid ?? false">
+            <span *ngIf="addressForm.get('phone')?.errors?.['required']">Phone number is required.</span>
+            <span *ngIf="addressForm.get('phone')?.errors?.['pattern']">Enter Valid Phone No.</span>
+          </ion-text> -->
+          <ion-text color="danger" *ngIf="addressForm.get('phone')?.touched && addressForm.get('phone')?.invalid">
+            <span *ngIf="addressForm.get('phone')?.hasError('required')">Phone number is required.</span>
+            <span *ngIf="addressForm.get('phone')?.hasError('pattern')">Enter a valid phone number.</span>
+          </ion-text>
+
+        </ion-col>
+      </ion-row>
+
+      <!-- Save As Type Selection -->
+      <ion-row>
+        <ion-col size="12">
+          <label class="input-label">Save As</label>
+          <div>
+            <ion-chip class="address_type" [class.active-tab]="addressForm.value.type === 'home'"
+              (click)="addressForm.controls['type'].setValue('home')">
+              <ion-icon name="home"></ion-icon> Home
+            </ion-chip>
+            <ion-chip class="address_type" [class.active-tab]="addressForm.value.type === 'work'"
+              (click)="addressForm.controls['type'].setValue('work')">
+              <ion-icon name="briefcase"></ion-icon> Work
+            </ion-chip>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <!-- Add Address Button -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12">
+          <ion-button (click)="addAddress()" color="none" [disabled]="addressForm.invalid">Add Address</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

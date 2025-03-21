@@ -21,20 +21,22 @@
         </ion-segment-button>
       </ion-segment>
     </ion-row> -->
-    <ion-row>
+
+    
+    <!-- <ion-row>
       <ion-col class="order">
         <ion-card [routerLink]="['/order-details']">
           <ion-row class="order_details border_bottom justify-content-center align-items-center">
             <ion-col size="auto" class="order_img">
-              <ion-img src="assets/images/ovation_item2.png"></ion-img>
+              <ion-img src="assets/images/item5.png"></ion-img>
             </ion-col>
             <ion-col class="order-info">
               <h1>#298124311</h1>
-              <p>6391 Celina, Del</p>
-              <p>10 items</p>
+              <p>B-177 Nityanand Nagar, Queens's Road, Jaipur - 302021</p>
+              <p>4 items</p>
             </ion-col>
            
-          <!-- <ion-col>
+          <ion-col>
             <div class="order_img">
               <ion-img src="assets/images/item5.png"></ion-img>
             </div>
@@ -46,7 +48,7 @@
             <div class="order-status pending">
               <ion-chip>Received</ion-chip>
             </div>
-          </ion-col> -->
+          </ion-col>
           </ion-row>
           <ion-row class="border_bottom order-date">
             <ion-col class="ion-text-start">
@@ -61,45 +63,89 @@
               <ion-chip>Received</ion-chip>
             </ion-col>
           </ion-row>
-          <!-- <ion-row class="call">
+          <ion-row class="call">
             <ion-button color="none">Call</ion-button>
-          </ion-row> -->
+          </ion-row>
           
         </ion-card>
       </ion-col>
-    </ion-row>
-    <ion-row>
+    </ion-row> -->
+
+
+    <ion-row *ngFor="let order of orders">
       <ion-col class="order">
-        <ion-card [routerLink]="['/order-details']">
+        <ion-card (click)="openOrder(order.id,order)">
           <ion-row class="order_details border_bottom justify-content-center align-items-center">
             <ion-col size="auto" class="order_img">
-              <ion-img src="assets/images/eyedrop.png"></ion-img>
+              <ion-img src="assets/images/cart_icon.png"></ion-img>
             </ion-col>
             <ion-col class="order-info">
-              <h1>#2981243113423</h1>
-              <p>6391 Celina, Delaware 1099</p>
-              <p>10 items</p>
+              <h1>#{{ order.orderId }}</h1>
+              <p>{{order.address ? order.address : 'Address not found'}}</p>
+              <p>{{ order.itemCount }} items</p>
             </ion-col>
           </ion-row>
           <ion-row class="border_bottom order-date">
             <ion-col class="ion-text-start">
-              <p>10 Apr 2024 at 07:45 PM</p>
+              <p>{{ order.created_at | date: 'dd MMM yyyy, hh:mm a' }}</p>
             </ion-col>
             <ion-col size="auto" class="ion-text-end price">
-             <p>{{ 'Currency.currency' | translate }}22</p>
+             <p>{{ 'Currency.currency' | translate }} {{+order.total + +order.tax}}</p>
             </ion-col>
           </ion-row>
-          <ion-row>
-            <ion-col class="order-status complete ion-text-end">
-              <ion-chip>Delivered</ion-chip>
+          <ion-row class="progress-bar-container">
+            <ion-col class="step"
+              [ngClass]="{'active': order.orderStatus == 'placed' || order.orderStatus == 'accepted' || order.orderStatus == 'shipped' || order.orderStatus == 'delivered'}">
+              <div class="circle"></div>
+              <p>Placed</p>
+            </ion-col>
+            <ion-col class="step"
+              [ngClass]="{'active': order.orderStatus == 'accepted' || order.orderStatus == 'shipped' || order.orderStatus == 'delivered'}">
+              <div class="circle"></div>
+              <p>Accepted</p>
+            </ion-col>
+            <ion-col class="step" [ngClass]="{'active': order.orderStatus == 'shipped' || order.orderStatus == 'delivered'}">
+              <div class="circle"></div>
+              <p>Shipped</p>
+            </ion-col>
+            <ion-col class="step" [ngClass]="{'active': order.orderStatus == 'delivered'}">
+              <div class="circle"></div>
+              <p>Delivered</p>
             </ion-col>
           </ion-row>
-          <!-- <ion-row class="call">
-            <ion-button color="none">Call</ion-button>
+
+
+          <!-- <ion-row>
+            <ion-col class="order-status pending ion-text-end">
+              <ion-chip>{{order.orderStatus}}</ion-chip>
+            </ion-col>
           </ion-row> -->
           
         </ion-card>
       </ion-col>
     </ion-row>
+
+    
   </ion-grid>
 </ion-content>
+<ion-footer *ngIf="cartCount > 0">
+  <ion-card class="cart-summary-card" [routerLink]="['/cart']">
+    <ion-grid>
+      <ion-row class="align-center">
+        <ion-col size="auto" class="card_img">
+          <img src="assets/images/cart_icon.png" alt="Product" class="product-image" />
+        </ion-col>
+        <ion-col class="ion-text-start">
+          <p class="item-count">{{ cartCount }} Items</p>
+          <p class="price">{{ 'Currency.currency' | translate }} {{orderTotal + tax | number:'1.0-0'}}</p>
+        </ion-col>
+        <ion-col size="auto" class="view-cart">
+          <ion-button fill="clear" class="view-cart-button">
+            View Cart
+            <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-footer>

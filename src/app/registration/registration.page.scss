@@ -8,7 +8,7 @@ ion-grid{
   // height:100%;
   // background-color: var(--ion-color-primary-contrast);
   overflow: scroll;
-  height: 94vh;
+  // height: 94vh;
   display: flex;
   align-items: center;
 }
@@ -37,7 +37,7 @@ ion-grid{
 
   margin-left: auto;
   margin-right: auto;
-  width: 256px;
+  width: 30%;
   margin-top: 10%;
   }
   h1 {
@@ -64,4 +64,8 @@ ion-grid{
     color: var(--ion-color-dark);
     padding-right: 10px;
     font-size: 24px;
+  }
+  .error{
+    color: red;
+    margin: 0;
   }

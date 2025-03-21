@@ -1,25 +1,44 @@
 <ion-header>
   <ion-toolbar>
-  <ion-row class="location_section">
-    <ion-col size="1"><ion-icon name="location-outline"></ion-icon></ion-col>
-    <ion-col size="10" class="address" (click)="address()">
-      <h1>Home <ion-icon name="chevron-down-outline" class="down_arrow"></ion-icon></h1>
-      <p>6391 Celina, Delaware 1099</p>
-    </ion-col>
-    <ion-col size="1" [routerLink]="['/cart']">
-      <ion-icon name="bag-handle-outline"></ion-icon>
-    </ion-col>
-  </ion-row>
-</ion-toolbar>
+    <ion-row class="location_section">
+      <ion-col size="1"><ion-icon name="location-outline"></ion-icon></ion-col>
+      <ion-col size="9" class="address" *ngIf="selectedAddress">
+        <h1 class="capitalize" (click)="address()">{{ selectedAddress.type ? selectedAddress.type : 'Select Address'}} <ion-icon name="chevron-down-outline" class="down_arrow"></ion-icon></h1>
+        <p>{{ selectedAddress.address  }}</p>
+      </ion-col>
+      <ion-col size="1" class="ion-text-end" style="margin-right: 2px;" [routerLink]="['/cart']">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-searchbar></ion-searchbar>
+        <ion-searchbar [routerLink]="['/search']"></ion-searchbar>
       </ion-col>
     </ion-row>
-    <ion-row  class="align_center">
+    <!-- <ion-row>
+      <swiper-container slides-per-view="1" style="width: 100%;" pagination="true">
+        <swiper-slide class="banner">
+          <ion-col class="slider-item">
+            <ion-img src="assets/images/banner.png"></ion-img>
+          </ion-col>
+        </swiper-slide>
+        <swiper-slide class="banner">
+          <ion-col class="slider-item">
+            <ion-img src="assets/images/banner.png"></ion-img>
+          </ion-col>
+        </swiper-slide>
+        <swiper-slide class="banner">
+          <ion-col class="slider-item">
+            <ion-img src="assets/images/banner.png"></ion-img>
+          </ion-col>
+        </swiper-slide>
+      </swiper-container>
+    </ion-row> -->
+    <ion-row class="align_center mb-10">
       <ion-col>
         <h1>{{ 'HOME.shopbycategory' | translate }}</h1>
       </ion-col>
@@ -27,33 +46,33 @@
         <p [routerLink]="['/category']">{{ 'HOME.seeall' | translate }}</p>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <!-- <ion-row>
       <ion-col size="4" [routerLink]="['/category']">
-        <ion-card class="item_card">
-          <ion-img src="assets/images/eyedrop.png"></ion-img>
-          <ion-card-content>
-            <p>Eye Drops</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="4" [routerLink]="['/category']">
-        <ion-card class="item_card">
-          <ion-img src="assets/images/Neutraceuticals.png"></ion-img>
-          <ion-card-content>
-            <p>Neutraceuticals</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <!-- <ion-col size="4" [routerLink]="['/category']">
         <ion-card class="item_card">
           <ion-img src="assets/images/item1.png"></ion-img>
           <ion-card-content>
             <p>Cold Drinks & Juices</p>
           </ion-card-content>
         </ion-card>
-      </ion-col> -->
+      </ion-col>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/item2.png"></ion-img>
+          <ion-card-content>
+            <p>Instant & Frozen Food</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" [routerLink]="['/category']">
+        <ion-card class="item_card">
+          <ion-img src="assets/images/milk.jpg"></ion-img>
+          <ion-card-content>
+            <p>Bread & Bakery</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
     </ion-row>
-    <!-- <ion-row>
+    <ion-row>
       <ion-col size="4" [routerLink]="['/category']">
         <ion-card class="item_card">
           <ion-img src="assets/images/item1.png"></ion-img>
@@ -80,37 +99,48 @@
       </ion-col>
     </ion-row> -->
 
-      <ion-card class="promo-card">
-        <ion-card-content>
-          <h2>Boost Your Health with Premium Nutraceuticals!</h2>
-          <ion-button expand="block" color="none" class="shop_btn" [routerLink]="['/category']">Shop Now</ion-button>
-        </ion-card-content>
-        <ion-img src="assets/images/ovation_item2.png"></ion-img>
-      </ion-card>
-      <ion-row  class="align_center">
-        <ion-col>
-          <h1>{{ 'HOME.bestdeal' | translate }}</h1>
-        </ion-col>
-        <ion-col class="ion-text-end see_all">
-          <p [routerLink]="['/bestdeal']">{{ 'HOME.seeall' | translate }}</p>
-        </ion-col>
-      </ion-row>
-      <swiper-container class="mySwiper" slides-per-view="1.5" style="width: 100%;">
+    <ion-row>
+      <ion-col size="4" *ngFor="let category of categories" (click)="navigateToCategory(category)">
+        <ion-card class="item_card">
+          <ion-img [src]="category.image ? category.image : 'assets/images/ovation_item6.png'"></ion-img>
+          <ion-card-content>
+            <p>{{ category.name }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-card class="promo-card">
+      <ion-card-content>
+        <h2>Boost Your Health with Premium Nutraceuticals!</h2>
+        <ion-button expand="block" color="none" class="shop_btn" [routerLink]="['/category']">Shop Now</ion-button>
+      </ion-card-content>
+      <ion-img src="assets/images/ovation_item6.png"></ion-img>
+    </ion-card>
+    <ion-row class="align_center">
+      <ion-col>
+        <h1>{{ 'HOME.bestdeal' | translate }}</h1>
+      </ion-col>
+      <ion-col class="ion-text-end see_all">
+        <p [routerLink]="['/bestdeal']">{{ 'HOME.seeall' | translate }}</p>
+      </ion-col>
+    </ion-row>
+    <!-- <swiper-container class="mySwiper" slides-per-view="1.5" style="width: 100%;">
         <swiper-slide>
           <ion-row class="best_deal_section">
             <ion-card class="product-card">
               <ion-card-header>
-                <ion-img class="product-image" src="assets/images/eyedrop.png"></ion-img>
+                <ion-img class="product-image" src="assets/images/item5.png"></ion-img>
                 <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
               </ion-card-header>
             
               <ion-card-content>
-                <h3 class="product-name">Eye Drops</h3>
-                <!-- <p class="product-quantity">500 ml</p> -->
+                <h3 class="product-name">Surf Excel Easy Wash Detergent Power</h3>
+                <p class="product-quantity">500 ml</p>
                 <div class="price-container">
                   <div class="price_div">
-                    <span class="current-price">{{ 'Currency.currency' | translate }}119.00</span>
-                    <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
+                    <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                    <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
                   </div>
                 <div>
                   <ion-button fill="solid" color="none" size="small" expand="block" [routerLink]="['/cart']">Add</ion-button>
@@ -127,17 +157,17 @@
           <ion-row class="best_deal_section">
             <ion-card class="product-card">
               <ion-card-header>
-                <ion-img class="product-image" src="assets/images/Neutraceuticals.png"></ion-img>
+                <ion-img class="product-image" src="assets/images/milk.jpg"></ion-img>
                 <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isActive }" (click)="toggleFavorite()"></ion-icon>
               </ion-card-header>
             
               <ion-card-content>
-                <h3 class="product-name">Neutraceuticals</h3>
-                <!-- <p class="product-quantity">500 ml</p> -->
+                <h3 class="product-name">Milk</h3>
+                <p class="product-quantity">500 L</p>
                 <div class="price-container">
                   <div class="price_div">
-                    <span class="current-price">{{ 'Currency.currency' | translate }}119.00</span>
-                    <!-- <span class="old-price">{{ 'Currency.currency' | translate }}14</span> -->
+                    <span class="current-price">{{ 'Currency.currency' | translate }}12</span>
+                    <span class="old-price">{{ 'Currency.currency' | translate }}14</span>
                   </div>
                 <div>
                   <ion-button fill="solid" color="none" size="small" expand="block" [routerLink]="['/cart']">Add</ion-button>
@@ -150,8 +180,78 @@
             
           </ion-row>
         </swiper-slide>
-      </swiper-container>
+      </swiper-container> -->
+
+    <swiper-container class="mySwiper" slides-per-view="1.5" style="width: 100%;">
+      <swiper-slide *ngFor="let item of randomItems">
+        <ion-row class="best_deal_section">
+          <ion-card class="product-card">
+            <ion-card-header (click)="itemDetails(item.id,item)">
+              <ion-img class="product-image" [src]="item.image || 'assets/images/milk.jpg'"></ion-img>
+              <!-- <ion-icon name="heart" class="favorite-icon" [ngClass]="{ 'active': isInWishlist(item.id) }"
+                  (click)="toggleWishlist(item.id)">
+                </ion-icon> -->
+            </ion-card-header>
+
+            <ion-card-content>
+              <h3 class="product-name">{{ item.name.length > 30 ? (item.name | slice:0:30) + '...' : item.name }}</h3>
+              <!-- <p class="product-quantity">{{ item.quantity }}</p> -->
+              <div class="price-container">
+                <div class="price_div">
+                  <span class="current-price">{{ 'Currency.currency' | translate }}{{ ((+item.price || 0) + ((+item.price || 0) * (+item.taxPercentage || 0) / 100))
+                  | number:'1.0-0' }}</span>
+                  <span class="old-price">{{ 'Currency.currency' | translate }}{{ item.mrp
+                    }}</span>
+                </div>
+              </div>
+              <!-- <div>
+                    <ion-button fill="solid" color="none" size="small" expand="block"
+                      (click)="addToCart(item)">Add</ion-button>
+                  </div> -->
+              <div class="counter_section" *ngIf="getItemQuantity(item.id) > 0; else addButton">
+                <ion-button fill="solid" color="none" size="small" class="added_btn"
+                  (click)="decrementItem(item.id)"><ion-icon name="remove-outline"></ion-icon></ion-button>
+                <p>{{ getItemQuantity(item.id) }}</p>
+                <ion-button fill="solid" color="none" size="small" class="added_btn"
+                  (click)="incrementItem(item.id)"><ion-icon name="add-outline"></ion-icon></ion-button>
+              </div>
+              <ng-template #addButton>
+                <div class="counter_section">
+                  <ion-button fill="solid" color="none" size="small" expand="block" (click)="addToCart(item)">{{
+                    'ItemDetails.add' |
+                    translate
+                    }}</ion-button>
+                </div>
+              </ng-template>
+            </ion-card-content>
+          </ion-card>
+        </ion-row>
+      </swiper-slide>
+    </swiper-container>
+
 
   </ion-grid>
 
 </ion-content>
+
+<ion-footer *ngIf="cartCount > 0">
+  <ion-card class="cart-summary-card" [routerLink]="['/cart']">
+    <ion-grid>
+      <ion-row class="align-center">
+        <ion-col size="auto" class="card_img">
+          <img src="assets/images/ovation_icon.png" alt="Product" class="product-image" />
+        </ion-col>
+        <ion-col class="ion-text-start">
+          <p class="item-count">{{ cartCount }} Items</p>
+          <p class="price">{{ 'Currency.currency' | translate }} {{orderTotal + tax | number:'1.0-0'}}</p>
+        </ion-col>
+        <ion-col class="ion-text-end"size="auto" class="view-cart">
+          <ion-button fill="clear" class="view-cart-button">
+            View Cart
+            <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-footer>

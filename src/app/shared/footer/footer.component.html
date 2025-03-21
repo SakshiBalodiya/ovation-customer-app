@@ -1,0 +1,21 @@
+<ion-footer *ngIf="cartCount > 0">
+  <ion-card class="cart-summary-card" [routerLink]="['/cart']">
+    <ion-grid>
+      <ion-row class="align-center">
+        <ion-col size="auto" class="card_img">
+          <img src="assets/images/cart_icon.png" alt="Product" class="product-image" />
+        </ion-col>
+        <ion-col class="ion-text-start">
+          <p class="item-count">{{ cartCount }} Items</p>
+          <p class="price">{{ 'Currency.currency' | translate }} {{ orderTotal }}</p>
+        </ion-col>
+        <ion-col size="auto" class="view-cart">
+          <ion-button fill="clear" class="view-cart-button">
+            View Cart
+            <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-footer>

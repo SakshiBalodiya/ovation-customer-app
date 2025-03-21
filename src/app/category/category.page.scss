@@ -68,12 +68,13 @@ ion-toolbar {
   .product-quantity {
     font-size: 12px;
     color: #666;
+    margin-bottom: 6px;
 
   }
   
   .price-container {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
     align-items: center;
     gap: 8px;
     margin: 10px 0;
@@ -82,6 +83,7 @@ ion-toolbar {
     display: flex;
     gap: 6px;
     align-items: center;
+    justify-content: end;
 
 }
   .current-price {
@@ -131,12 +133,18 @@ ion-card {
     margin: 0px;
     box-shadow: none;
   }
-  .item_card ion-img{
-    height: 60px;
-    padding: 8px;
-    background-color: #c6c6c629;
-    border-radius: 10px;
-  }
+.item_card.active ion-img {
+  background-color: #02b8ad33;
+  border: 1px solid var(--ion-color-primary);
+}
+.item_card ion-img {
+  height: 60px;
+  padding: 8px;
+  background-color: #c6c6c629;
+  /* Default background */
+  border-radius: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
   .category_section{
     overflow-y: scroll;
     height: 68vh;
@@ -178,6 +186,49 @@ ion-card {
     }
     .item_scroll {
       height: 72vh; /* Height for 375px width */
+    }
+  }
+  .category_section_full{
+    overflow-y: scroll;
+    height: 83vh;
+  }
+  .item_scroll_full {
+    overflow-y: scroll;
+    height: 83vh; /* Default height */
+  }
+  
+  @media (min-width: 366px) {
+    .category_section_full {
+      overflow-y: scroll;
+      height: 85vh;
+    }
+    
+    .item_scroll_full {
+      overflow-y: scroll;
+      height: 85vh;
+    }
+  }
+  
+  @media (min-width: 344px) {
+    .category_section_full {
+      overflow-y: scroll;
+      height: 88vh;
+    }
+    
+    .item_scroll_full {
+      overflow-y: scroll;
+      height: 88vh;
+    }
+  }
+  
+  /* Specific rule for 375px width */
+  @media (width: 375px) {
+    .category_section_full {
+      overflow-y: scroll;
+      height: 85vh;
+    }
+    .item_scroll_full {
+      height: 85vh; /* Height for 375px width */
     }
   }
   
@@ -225,4 +276,54 @@ ion-footer{
 .card_img{
   background-color: #fff;
   border-radius: 10px;
+}
+
+.favorite-icon {
+  font-size: 24px;
+  color: grey;
+  cursor: pointer;
+}
+
+.favorite-icon.active {
+  color: var(--ion-color-primary);
+}
+.counter_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.counter_section .added_btn {
+  margin-top: 0px !important;
+  max-width: 45px;
+  height: 40px;
+  width: 45px;
+  padding: 0px;
+}
+
+// .counter_section {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100%;
+//   gap: 5px;
+ 
+// }
+
+// .counter_section .added_btn {
+//   max-width: 45px;
+//   height: 40px;
+//   width: 45px;
+//   padding: 0px;
+// }
+
+.counter_section .added_btn:first-child {
+  margin-left: 5px;
+  /* Left align "-" button */
+}
+
+.counter_section .added_btn:last-child {
+  margin-right: 5px;
+  /* Right align "+" button */
 }

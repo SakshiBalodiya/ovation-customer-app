@@ -77,3 +77,32 @@ ion-radio.radio-checked::part(mark) {
 .add_padding{
   padding: 0px 10px;
 }
+.capitalize {
+  text-transform: capitalize;
+}
+.trash{
+  margin-left: 8px;
+}
+ion-icon{
+  font-size: 20px;
+}
+.item-inner{
+  padding-right: 5px;
+}
+
+
+.disabled-address {
+  background-color: #f1f1f1 !important;
+  color: #888 !important;
+  opacity: 0.6;
+}
+
+.disabled-address ion-label {
+  color: #aaa !important;
+  pointer-events: none;
+}
+
+ion-radio[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}

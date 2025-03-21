@@ -1,0 +1,21 @@
+<ion-content scroll-y="false">
+ <div class="modal_div">
+  <ion-row class="imge">
+    <ion-img src="assets/images/check.png" *ngIf="heading=='Success'"></ion-img>
+    <ion-img src="assets/images/remove.png" *ngIf="heading!='Success'"></ion-img>
+
+  </ion-row>
+  <ion-row class="orderPlaced-text ion-text-center">
+    <h1 class="mt-16">{{heading}}</h1>
+    <p class="mb-0">{{msg}}</p>
+  </ion-row>
+ 
+  <ion-row class="ion-text-center view_btn">
+    <ion-button (click)="close()">
+     Ok
+    </ion-button>
+  </ion-row>
+ </div>
+
+  
+</ion-content>

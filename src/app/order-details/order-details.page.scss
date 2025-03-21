@@ -1,6 +1,6 @@
 ion-header{
     box-shadow: none;
-    padding: 20px 6px 16px 6px;
+    padding: 30px 6px 2px 6px;
     ion-icon{
         zoom: 1.6;
     }
@@ -9,6 +9,17 @@ ion-header{
   ion-title{
     padding: 0px;
   }
+ion-toolbar {
+  --background: transparent;
+  --border-width: 0px !important;
+}
+  
+.header h1 {
+  font-size: 18px;
+  margin: 0px;
+  font-weight: 600;
+  margin-right: 18px;
+}
   ion-content{
     --background: #e1e1e142;
 
@@ -35,8 +46,8 @@ ion-header{
     align-items: center;
     background-color: #ffffff;
     // border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 12px;
+    margin-bottom: -5px;
     // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
@@ -89,3 +100,65 @@ ion-header{
   .free{
     color: #5AC268;
   }
+  .itemname{
+    width: 75%;
+  }
+
+    .progress-bar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 10px 10px 10px;
+      position: relative;
+    }
+  
+    .progress-bar-container::before {
+      content: "";
+      position: absolute;
+      width: 85%;
+      /* Adjust width for better alignment */
+      height: 4px;
+      background: #ccc;
+      top: 50%;
+      left: 7.5%;
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+  
+    .step {
+      text-align: center;
+      position: relative;
+      flex: 1;
+      z-index: 1;
+    }
+  
+    .step .circle {
+      width: 24px;
+      height: 24px;
+      background: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid white;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    .step.active .circle {
+      background: #28a745;
+      /* Green for active steps */
+    }
+  
+    .step p {
+      font-size: 12px;
+      margin-top: 55px;
+      /* Push text below */
+      color: #666;
+    }
+  
+    .step.active p {
+      font-weight: bold;
+      color: #28a745;
+    }

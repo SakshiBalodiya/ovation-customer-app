@@ -3,56 +3,90 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" class="ion-justify-center ion-text-center">
-        <ion-img class="img" src="assets/images/ovationLogo.jpg"></ion-img>
+        <ion-img class=" ion-text-center img" src="assets/images/ovationLogo.jpg"></ion-img>
       </ion-col>
       <ion-col size="12" class="ion-text-center">
         <h1>Create New Account</h1>
       </ion-col>
     </ion-row>
-    <form class="login-form" method="post"> 
+    <form class="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <ion-row>
+    
+        <!-- Name Field -->
         <ion-col size="12">
           <ion-label>Name</ion-label>
           <div class="input-container">
-            <ion-input name="name" type="text" placeholder="Enter Your Name" class="input" required></ion-input>
+            <ion-input formControlName="name" type="text" placeholder="Enter Your Name" class="input"></ion-input>
           </div>
+          <p *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched && registerForm.get('name')?.value"
+            class="error">
+            Name must contain only alphabets.
+          </p>
         </ion-col>
+    
+        <!-- Email Field -->
         <ion-col size="12">
           <ion-label>Email</ion-label>
           <div class="input-container">
-            <ion-input name="email" type="email" placeholder="Enter Your Email" class="input" required></ion-input>
-        </div>
+            <ion-input formControlName="email" type="email" placeholder="Enter Your Email" class="input"></ion-input>
+          </div>
+          <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched && registerForm.get('email')?.value"
+            class="error">
+            Enter a valid email address.
+          </p>
+          <p *ngIf="emailError" class="error">
+            {{ emailError }}
+          </p>
         </ion-col>
+    
+        <!-- Phone Number Field -->
         <ion-col size="12">
           <ion-label>Contact Number</ion-label>
           <div class="input-container">
-            <ion-input name="number" type="tel" maxlength="10" placeholder="Enter Your Contact Number" class="input" required></ion-input>
-        </div>
+            <ion-input formControlName="phone" type="tel" maxlength="10" placeholder="Enter Your Contact Number"
+              class="input"></ion-input>
+          </div>
+          <p *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched && registerForm.get('phone')?.value"
+            class="error">
+            Contact number must be 10 digits.
+          </p>
         </ion-col>
+    
+        <!-- Password Field -->
         <ion-col size="12">
           <ion-label>Password</ion-label>
-          <div class="pass-input">      
-            <ion-input name="password"  type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter Password" required></ion-input>
-            <ion-icon [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" (click)="togglePassword()" class="eye-icon">
-          </ion-icon>
+          <div class="pass-input">
+            <ion-input formControlName="password" [type]="showPassword ? 'text' : 'password'"
+              placeholder="Enter Password"></ion-input>
+            <ion-icon [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" (click)="togglePassword()"
+              class="eye-icon"></ion-icon>
           </div>
+          <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched && registerForm.get('password')?.value"
+            class="error">
+            Password must be at least 8 characters with at least one letter and one digit.
+          </p>
         </ion-col>
+    
+        <!-- Confirm Password Field -->
         <ion-col size="12">
           <ion-label>Confirm Password</ion-label>
           <div class="pass-input">
-                  
-            <ion-input name="password"  type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter Confirm Password" required>
-            </ion-input>
-            <ion-icon    
-            [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
-            (click)="togglePassword()"
-            class="eye-icon"
-          ></ion-icon>
+            <ion-input formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'"
+              placeholder="Enter Confirm Password"></ion-input>
+            <ion-icon [name]="showConfirmPassword ? 'eye-outline' : 'eye-off-outline'" (click)="toggleConfirmPassword()"
+              class="eye-icon"></ion-icon>
           </div>
+          <p *ngIf="registerForm.hasError('mismatch') && registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.value"
+            class="error">
+            Passwords do not match.
+          </p>
         </ion-col>
+    
+        <!-- Submit Button -->
         <ion-col size="12">
-          <ion-button class="btn" [routerLink]="['']">Sign Up</ion-button>
+          <ion-button class="btn" type="submit" [disabled]="registerForm.invalid">Sign Up</ion-button>
         </ion-col>
+    
       </ion-row>
     </form>
     <ion-row class="ion-text-center signin-text">

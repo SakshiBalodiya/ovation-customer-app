@@ -10,13 +10,14 @@
       </ion-row>
   
       <div class="form-div">
-        <form  class="login-form" method="post">
+        <form  class="login-form" (ngSubmit)="login()">
           
             <ion-row>
               <ion-col>
                 <ion-label>Email</ion-label>
                 <div class="email-input">
-                  <ion-input name="email" type="email" placeholder="Enter Your Email" class="input" required></ion-input>
+                  <ion-input [(ngModel)]="email" name="email" type="email" placeholder="Enter Your Email" autocomplete="email"
+                  class="input" required></ion-input>
                 </div>
               </ion-col>
             </ion-row>
@@ -25,15 +26,11 @@
               <ion-col>
                 <ion-label>Password</ion-label>
                 <div class="pass-input">
-                  
-                  <ion-input name="password"  type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter Password" class="input"
-                    required>
-                  </ion-input> 
-                  <ion-icon    
-                  [name]="showPassword ? 'eye-outline' : 'eye-off-outline'"
-                  (click)="togglePassword()"
-                  class="eye-icon"
-                ></ion-icon>
+                  <ion-input [(ngModel)]="password" name="password" type="{{ showPassword ? 'text' : 'password' }}"
+                    placeholder="Enter Password" class="input" required autocomplete="current-password">
+                  </ion-input>
+                  <ion-icon [name]="showPassword ? 'eye-outline' : 'eye-off-outline'" (click)="togglePassword()"
+                    class="eye-icon"></ion-icon>
                 </div>
                   
               </ion-col>
@@ -46,7 +43,7 @@
             </ion-row>
             <ion-row>
               <ion-col size-lg="8" size-sm="12" offset-lg="2">
-                <ion-button color="#927AD8" class="ion-margin-vertical sign_btn" type="submit" (click)="login()">
+                <ion-button expand="full" color="primary" class="ion-margin-vertical sign_btn" type="submit">
                   {{ 'LOGIN.login' | translate }}
                 </ion-button>
                 <!--  [routerLink]="['/home']" -->
