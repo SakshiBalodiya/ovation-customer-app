@@ -71,7 +71,8 @@
         "createnewpassword":"Create New Password",
         "newpassword":"New Password",
         "oldpassword":"Old Password",
-        "confirmpassword":"Confirm Password"
+        "confirmpassword":"Confirm Password",
+        "currentpassword": "Current Password"
     },
     "Privacy":
     {

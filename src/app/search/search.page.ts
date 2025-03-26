@@ -21,7 +21,7 @@ export class SearchPage implements OnInit {
   filteredItems: any[] = [];
   topSearches: string[] = ['Good Knight', 'Tata Salt', 'Amul Milk', 'Oil', 'Sugar'];
   wishlist: any;
-  customerId: number;
+  customerId: any;
   randomItems: any;
   cartCount: any;
   orderTotal: any;
@@ -29,10 +29,11 @@ export class SearchPage implements OnInit {
   recentSearches: string[] = [];
   tax: any;
   constructor(private modalController: ModalController, private apiService: ApiService) { 
-    this.customerId = Number(localStorage.getItem('customerId')); 
+    
   }
 
   async ngOnInit() {
+    this.customerId = Number(localStorage.getItem('customerId')); 
     this.searchSubject.pipe(
       debounceTime(300) 
     ).subscribe(query => {

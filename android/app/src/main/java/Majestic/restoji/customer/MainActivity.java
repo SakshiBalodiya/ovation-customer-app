@@ -1,4 +1,4 @@
-package Majestic.restoji.customer;
+package Majestic.ovation.customer;
 
 import com.getcapacitor.BridgeActivity;
 

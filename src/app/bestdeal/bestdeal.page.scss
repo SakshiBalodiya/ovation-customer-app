@@ -20,16 +20,19 @@ ion-toolbar {
     zoom: 1.6;
 }
 
-.product-card {
-    width: 100%;
-    max-width: 168px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    text-align: left;
-    margin: 0px;
-  }
-  
+.product-card{
+  width: 100%;
+  max-width: 172px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: left;
+  width: 44vw;
+  height: 100%;
+  padding-bottom: 10px;
+  margin: 0px;
+
+}
   .product-card ion-card-header {
     position: relative;
     padding: 0;
@@ -64,20 +67,38 @@ ion-toolbar {
     margin: 10px 0 4px;
     line-height: 1.2;
     color: #333;
+    height: 40px;
+    /* Adjust based on your design */
+    display: -webkit-box;
+    --webkit-line-clamp: 2;
+    /* Limit text to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  
+  .product-card ion-card-header {
+    position: relative;
+    padding: 0;
+    background: #c6c6c629;
+    margin: 10px;
+    border-radius: 6px;
+  }
   .product-quantity {
     font-size: 12px;
     color: #666;
-    margin-bottom: 0px;
+    // margin-bottom: 10px;
   }
+  
   
   .price-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    margin: 0px 0px 10px 0;
+    margin: 10px 0;
+  }
+  .price_div_trending{
+    display: flex;
+    gap: 8px;
   }
   .price_div{
     display: flex;
@@ -96,7 +117,6 @@ ion-toolbar {
   }
   
   ion-button {
-
     font-size: 14px;
     font-weight: 500;
     background-color: var(--ion-color-primary);
@@ -116,15 +136,26 @@ ion-toolbar {
   justify-content: center;
 }
 
+
+.product-image {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+  margin: 10px auto 10px;
+}
 .favorite-icon {
-  font-size: 24px;
-  color: grey;
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  font-size: 20px;
+  color: #888;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.favorite-icon.active {
-  color: var(--ion-color-primary);
-}
+// .favorite-icon.active {
+//   color: var(--ion-color-primary);
+// }
 // .counter_section {
 //   display: flex;
 //   align-items: center;

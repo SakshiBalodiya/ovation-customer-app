@@ -32,16 +32,22 @@ export class CartPage implements OnInit {
   //   await this.apiService.loadCart();
   // }
   async ngOnInit() {
+
     // this.amount = this.getOrderTotal();
     // console.log(this.amount);
+    await this.apiService.loadCart();
+    this.cart = this.apiService.getCart();
+    // await this.loadData();
+    this.matchCartWithItems();
+    this.loadAddress();
+    
+  }
+  async ionViewDidEnter() {
     await this.apiService.loadCart();
     this.cart = this.apiService.getCart();
     await this.loadData();
     this.matchCartWithItems();
     this.loadAddress();
-    
-  }
-  ionViewDidEnter() {
     this.checkDeliveryStatus();
   }
   async loadData() {

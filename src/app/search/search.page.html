@@ -3,7 +3,7 @@
     <ion-row class="header">
       <ion-col size="12" class="d-flex align-center space-between">
         <ion-icon name="chevron-back-outline" [routerLink]="['/tabs/tab1']"></ion-icon>
-        <ion-img *ngIf="isSearchActive" src="assets/images/sort.png" (click)="sortBy()"></ion-img>
+        <!-- <ion-img *ngIf="isSearchActive" src="assets/images/sort.png" (click)="sortBy()"></ion-img> -->
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -69,7 +69,7 @@
                   </div>
                   <div class="price_value">
                     <p class="current-price">{{ 'Currency.currency' | translate }}{{ ((+item.price || 0) + ((+item.price || 0) * (+item.taxPercentage || 0) / 100))
-                    | number:'1.0-0' }}</p>
+                    |  number:'1.2-2' }}</p>
                     <!-- <p class="old-price">{{ 'Currency.currency' | translate }}{{item.mrp}}</p> -->
                   </div>
                  
@@ -246,7 +246,7 @@
     
       <ion-row class="search_pro">
         <ion-col size="6" *ngFor="let item of filteredItems">
-          <ion-card class="product-card">
+          <ion-card class="search-product-card product-card">
             <ion-card-header>
               <ion-img class="product-image" [src]="item.image || 'assets/images/milk.jpg'"></ion-img>
               <ion-icon [name]="isInWishlist(item.id) ? 'heart' : 'heart-outline'" [class.favorite-icon]="true"
@@ -262,8 +262,8 @@
                 </div>
                 <div class="price_value">
                   <p class="current-price">{{ 'Currency.currency' | translate }}{{ ((+item.price || 0) + ((+item.price || 0) * (+item.taxPercentage || 0) / 100))
-                  | number:'1.0-0' }}</p>
-                  <p class="old-price">{{ 'Currency.currency' | translate }}{{ item.mrp }}</p>
+                  | number:'1.2-2' }}</p>
+                  <!-- <p class="old-price">{{ 'Currency.currency' | translate }}{{ item.mrp }}</p> -->
                 </div>
               </div>
               <!-- <div>
@@ -295,7 +295,7 @@
 </ion-content>
 <ion-footer *ngIf="cartCount > 0">
   <ion-card class="cart-summary-card" [routerLink]="['/cart']">
-    <ion-grid>
+    <ion-grid class="cart_grid">
       <ion-row class="align-center">
         <ion-col size="auto" class="card_img">
           <img src="assets/images/ovation_icon.png" alt="Product" class="product-image" />

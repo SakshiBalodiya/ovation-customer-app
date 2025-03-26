@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Ovation</string>
     <string name="title_activity_main">Ovation</string>
-    <string name="package_name">Majestic.restoji.customer</string>
-    <string name="custom_url_scheme">Majestic.restoji.customer</string>
+    <string name="package_name">Majestic.ovation.customer</string>
+    <string name="custom_url_scheme">Majestic.ovation.customer</string>
 </resources>

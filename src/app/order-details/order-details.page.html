@@ -9,7 +9,7 @@
 <ion-content>
   <div class="order-container">
     <div class="order-summary">
-      <p>{{orderStatus}}, {{itemCount}} Items, ₹ {{total}}</p>
+      <p>{{orderStatus}}, {{itemCount}} Items, {{ 'Currency.currency' | translate }}{{(+total+ +tax) | number:'1.2-2'}}</p>
     </div>
 
     <div class="address-section">
@@ -45,11 +45,11 @@
       <h3>Bill Details</h3>
       <div class="bill-item item_name" *ngFor="let order of orderdetails.items">
         <div class="itemname">{{order.name}} X {{order.amount}}</div>
-        <div class="ion-text-end">₹ {{+order.total + +order.tax}}</div>
+        <div class="ion-text-end">{{ 'Currency.currency' | translate }}{{(+order.total + +order.tax) | number:'1.2-2'}}</div>
       </div>
       <div class="bill-item">
         <div class="itemname">Item Total</div>
-        <div>₹{{+total+ +tax}}</div>
+        <div>{{ 'Currency.currency' | translate }}{{(+total+ +tax) | number:'1.2-2'}}</div>
       </div>
       <div class="bill-item">
         <div class="itemname">Delivery Fee</div>
@@ -61,7 +61,7 @@
       </div> -->
       <div class="bill-item total">
         <div class="itemname">Bill Total</div>
-        <div>₹{{+total+ +tax}}</div>
+        <div>{{ 'Currency.currency' | translate }}{{(+total+ +tax) | number:'1.2-2'}}</div>
       </div>
     </div>
 

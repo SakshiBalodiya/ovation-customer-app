@@ -10,9 +10,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
+  <ion-grid  *ngIf="wishlistItems.length > 0; else emptyWishlist">
     <ion-row class="best_deal_section">
-      <ng-container *ngIf="wishlistItems.length > 0; else emptyWishlist">
+      <ng-container>
         <ion-col size="6" class="align_center" *ngFor="let item of wishlistItems">
           <ion-card class="product-card">
             <ion-card-header>
@@ -47,13 +47,17 @@
           </ion-card>
         </ion-col>
       </ng-container>
+     
     </ion-row>
   </ion-grid>
-
   <ng-template #emptyWishlist>
-    <div class="ion-text-center">
-      <h4>No item in wishlist.</h4>
-    </div>
+    <ion-row class="empty-cart-container">
+      <ion-col size="12" class="ion-text-center">
+        <ion-img src="assets/images/empty_wishlist.png" class=" ion-text-center img"></ion-img>
+        <h4>No item in wishlist.</h4>
+        <ion-button expand="block" class=" ion-text-center home" [routerLink]="['/tabs/tab1']">Go to Home</ion-button>
+      </ion-col>
+    </ion-row>
   </ng-template>
 
 </ion-content>
@@ -66,7 +70,7 @@
         </ion-col>
         <ion-col class="ion-text-start">
           <p class="item-count">{{ cartCount }} Items</p>
-          <p class="price">{{ 'Currency.currency' | translate }} {{orderTotal + tax | number:'1.0-0'}}</p>
+          <p class="price">{{ 'Currency.currency' | translate }} {{orderTotal + tax | number:'1.2-2'}}</p>
         </ion-col>
         <ion-col size="auto" class="view-cart">
           <ion-button fill="clear" class="view-cart-button">

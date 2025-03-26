@@ -85,6 +85,12 @@ ion-segment{
   .order-info p {
     margin: 0;
     font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+  
   }
   .order-status{
     padding-right: 0px;
@@ -160,6 +166,7 @@ ion-segment{
       width: auto;
       border-radius: 8px;
       margin: 0px auto 0px;
+      display: flex;
     }
   
     .item-count {
@@ -246,3 +253,16 @@ ion-segment{
   color: #28a745;
 }
   
+.cart_grid{
+  padding: 0px 16px 0px 10px;
+}
+.view-cart-button{
+  --color: white;
+  font-weight: bold;
+  padding: 0;
+  margin-top: 2px !important;
+  font-size: 15px;
+}
+.view-cart-button ion-button{
+  font-size: 15px !important;
+}

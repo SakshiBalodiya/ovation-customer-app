@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ApiService {
-  apiUrl = "https://majestictechnosoft.com/restojiapinew/public";
+  // apiUrl = "https://majestictechnosoft.com/restojiapinew/public";
   // apiUrl = "http://192.168.1.13/restojiapinew/public";
+  apiUrl = "https://api.restoji.com/public/";
   storeId = 1023;
   cart: any[] = [];
   cartData: any;
@@ -150,11 +151,12 @@ export class ApiService {
     let cart = this.getCart();
     let existingItem = cart.find(cartItem => cartItem.id === item.id);
 
-    if (existingItem) {
-      existingItem.quantity += 1;
-      existingItem.tax = (existingItem.quantity * parseFloat(existingItem.tax)).toFixed(2);
-      existingItem.total = (existingItem.quantity * parseFloat(existingItem.price)).toFixed(2);
-    } else {
+    // if (existingItem) {
+    //   existingItem.quantity += 1;
+    //   existingItem.tax = (existingItem.quantity * parseFloat(existingItem.tax)).toFixed(2);
+    //   existingItem.total = (existingItem.quantity * parseFloat(existingItem.price)).toFixed(2);
+    // } else {
+
       cart.push({
         id: item.id,
         name: item.name,
@@ -164,7 +166,7 @@ export class ApiService {
         quantity: 1,
         total: parseFloat(item.price).toFixed(2),
       });
-    }
+    
 
     await this.updateCart(cart);
   }
@@ -177,6 +179,7 @@ export class ApiService {
     if (item) {
       item.quantity += 1;
       item.total = (item.quantity * parseFloat(item.price)).toFixed(2);
+      item.tax = parseFloat((item.total * item.taxPercentage / 100).toFixed(2))
     }
 
     await this.updateCart(cart);
@@ -195,6 +198,7 @@ export class ApiService {
         cart.splice(itemIndex, 1); // Remove item if quantity reaches zero
       } else {
         item.total = (item.quantity * parseFloat(item.price)).toFixed(2);
+        item.tax = parseFloat((item.total * item.taxPercentage / 100).toFixed(2))
       }
     }
 
