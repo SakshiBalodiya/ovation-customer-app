@@ -45,9 +45,9 @@
     </ion-row> -->
     <ion-row class="price">  
       <ion-col class="price_col">
-        <span class="current-price">{{ 'Currency.currency' | translate }} {{ ((+price || 0) + ((+price || 0) * (+taxPercentage || 0) / 100))
-        | number:'1.0-0' }}</span>
-        <span class="old-price">{{ 'Currency.currency' | translate }} {{mrp}}</span>
+        <span class="current-price">{{ 'Currency.currency' | translate }}{{ ((+price || 0) + ((+price || 0) * (+taxPercentage || 0) / 100))
+        | number:'1.2-2' }}</span>
+        <!-- <span class="old-price">{{ 'Currency.currency' | translate }} {{mrp}}</span> -->
         <!-- <ion-chip>10% OFF</ion-chip> -->
         <ion-chip *ngIf="calculateDiscountPercentage(mrp, price) > 0">
           {{ calculateDiscountPercentage(mrp, price) }}% OFF
@@ -55,8 +55,8 @@
       </ion-col>
     </ion-row>
     <!-- <ion-row class="item_details"><p>{{description}}<span>Read More</span></p></ion-row> -->
-    <ion-row><h4>Description</h4></ion-row>
-    <ion-row class="item_details"><p>{{description}}</p></ion-row>
+    <ion-row *ngIf="description"><h4>Description</h4></ion-row>
+    <ion-row *ngIf="description" class="item_details"><p>{{description}}</p></ion-row>
     <!-- <ion-row>
       <h2>{{ 'ItemDetails.reviewsandratings' | translate }}</h2>
     </ion-row>
@@ -119,12 +119,12 @@
                 <h3 class="product-name">{{ item.name.length > 30 ? (item.name | slice:0:30) + '...' : item.name }}</h3>
                 <!-- <p class="product-quantity">{{ item.quantity }}</p> -->
                 <div class="price-container">
-                  <div class="price_div">
+                  <!-- <div class="price_div">
                     <p class="product-quantity">1 L</p>
       
-                  </div>
+                  </div> -->
                   <div class="price_value">
-                    <p class="current-price">{{ 'Currency.currency' | translate }}{{item.price}}</p>
+                    <p class="current-price">{{ 'Currency.currency' | translate }}{{item.price | number:'1.2-2' }}</p>
                     <!-- <p class="old-price">{{ 'Currency.currency' | translate }}{{item.price}}</p> -->
                   </div>
                 </div>
@@ -170,7 +170,7 @@
     </ion-col> -->
     <ion-col size="6">
       <p class="current-price" style="margin: 0;">{{ 'Currency.currency' | translate }} {{price}}</p>
-      <span class="old-price">{{ 'Currency.currency' | translate }} {{mrp}}</span>
+      <!-- <span class="old-price">{{ 'Currency.currency' | translate }} {{mrp}}</span> -->
       <!-- <ion-chip>10% OFF</ion-chip> -->
       <!-- <ion-chip *ngIf="calculateDiscountPercentage(mrp, price) > 0">
         {{ calculateDiscountPercentage(mrp, price) }}% OFF

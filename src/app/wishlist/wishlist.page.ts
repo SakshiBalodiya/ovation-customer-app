@@ -12,16 +12,18 @@ export class WishlistPage implements OnInit {
   wishlist: { itemId: number; customerId: number }[] = [];
   allItems: any[] = [];
   wishlistItems: any[] = [];
-  customerId: number; // Ensure customerId is a number
+  customerId: any; // Ensure customerId is a number
   cartCount: any;
   orderTotal: any;
   tax: any;
 
   constructor(private apiService: ApiService, private router: Router) {
-    this.customerId = Number(localStorage.getItem('customerId')); // Convert to number
+   // Convert to number
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.customerId = Number(localStorage.getItem('customerId')); 
+   }
 
   ionViewWillEnter() {
     this.loadWishlist();

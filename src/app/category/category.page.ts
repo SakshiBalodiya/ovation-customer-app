@@ -16,7 +16,7 @@ export class CategoryPage implements OnInit {
   selectedCategory: any = null;
   filteredItems: any;
   wishlist: number[] = [];
-  customerId: number; 
+  customerId: any; 
   amount: any;
   type: any;
   cartCount: any;
@@ -24,10 +24,11 @@ export class CategoryPage implements OnInit {
   tax: any;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router, public modalCtrl: ModalController, private alertController: AlertController, private cdRef: ChangeDetectorRef) {
-    this.customerId = Number(localStorage.getItem('customerId')); 
+    
   }
 
   async ngOnInit() {
+    this.customerId = Number(localStorage.getItem('customerId')); 
     this.loadData();
     this.loadWishlist();
     await this.apiService.loadCart();
@@ -143,10 +144,13 @@ export class CategoryPage implements OnInit {
   }
 
   updateCartCount() {
+
     const cart = this.apiService.getCart();
     this.cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     this.orderTotal = cart.reduce((total, item) => total + parseFloat(item.total), 0);
     this.tax = cart.reduce((tax, item) => tax + parseFloat(item.tax), 0);
+    console.log( this.orderTotal, "Order Total",this.tax , "Tax" )
+    console.log(cart, 'cart')
   }
 
   back() {

@@ -218,6 +218,7 @@ ion-grid{
     font-size: 16px;
     font-weight: 600;
     color: #000;
+    text-transform: capitalize;
   }
   .address_section ion-label h2{
     font-weight: 400;
@@ -247,7 +248,7 @@ ion-grid{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     height: 50px;
     max-width: 100%;
@@ -327,14 +328,16 @@ ion-grid{
   align-items: center;
 
 }
-.empty-cart-container {
-  height: 100vh;
+.empty-cart-container{
+  height: 84%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
+.empty-cart-container ion-col{
+  display : contents
+}
 .img {
   width: 30%;
   display: block;
@@ -358,3 +361,6 @@ ion-grid{
   border-radius: 10px;
   padding: 5px;
 }
+// .empty-cart-container ion-img{
+//   filter: brightness(0) saturate(100%) invert(61%) sepia(47%) saturate(6433%) hue-rotate(143deg) brightness(100%) contrast(98%);
+// }

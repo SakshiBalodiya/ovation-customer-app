@@ -168,6 +168,7 @@ ion-header{
     .card_img {
       background-color: #fff;
       border-radius: 10px;
+      display: flex;
     }
     .counter_section {
       display: flex;
@@ -192,4 +193,20 @@ ion-header{
     .counter_section .added_btn:last-child {
       margin-right: 5px;
       /* Right align "+" button */
+    }
+    .main_content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .empty-cart-container{
+      height: 84%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .empty-cart-container ion-col{
+      display : contents
     }

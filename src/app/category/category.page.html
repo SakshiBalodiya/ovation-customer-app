@@ -64,7 +64,7 @@
                   </div>
                   <div class="price_value">
                     <p class="current-price">{{ 'Currency.currency' | translate }}{{ ((+product.price || 0) + ((+product.price || 0) * (+product.taxPercentage || 0) / 100))
-                    | number:'1.0-0' }}</p>
+                    | number:'1.2-2' }}</p>
                     <!-- <p class="old-price">{{ 'Currency.currency' | translate }}{{
                       product.mrp }}</p> -->
                   </div>
@@ -119,14 +119,14 @@
 
 <ion-footer *ngIf="cartCount > 0">
   <ion-card class="cart-summary-card" [routerLink]="['/cart']">
-    <ion-grid>
+    <ion-grid class="cart_grid">
       <ion-row class="align-center">
         <ion-col size="auto" class="card_img">
           <img src="assets/images/ovation_icon.png" alt="Product" class="product-image" />
         </ion-col>
         <ion-col class="ion-text-start">
           <p class="item-count">{{ cartCount }} Items</p>
-          <p class="price">{{ 'Currency.currency' | translate }} {{orderTotal + tax | number:'1.0-0'}}</p>
+          <p class="price">{{ 'Currency.currency' | translate }}{{orderTotal + tax | number:'1.2-2'}}</p>
         </ion-col>
         <ion-col size="auto" class="view-cart">
           <ion-button fill="clear" class="view-cart-button">
