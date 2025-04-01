@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ModalController, ToastController } from '@ionic/angular';
+import { LoadingController, ModalController, ToastController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -17,13 +17,16 @@ export class AddressPage implements OnInit {
   selectedAddress: any;
   selectedAddress12: any;
   isDeliveryDisabled: boolean = false;
+  modalController: any;
+  
 
   constructor(
     public modalCtrl: ModalController,
     private router: Router,
     private apiService: ApiService,
     private toastController: ToastController,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private alertController: AlertController,
   ) {
     // Listen for route changes
     this.router.events.subscribe(() => {
@@ -64,6 +67,11 @@ export class AddressPage implements OnInit {
       // Auto-select the first address if no selection is stored
       if (!this.selectedAddressId && this.addresses.length > 0) {
         this.selectedAddressId = this.addresses[0].id.toString();
+        localStorage.setItem('selectedAddressId', this.selectedAddressId);
+      }
+      else if(this.addresses.length == 1){
+        this.selectedAddressId = this.addresses[0].id.toString();
+        localStorage.setItem('selectedAddressId', this.selectedAddressId);
       }
     } catch (error) {
       console.error('Error fetching address:', error);
@@ -162,12 +170,15 @@ export class AddressPage implements OnInit {
       return 0; // Return 0 if there's an error
     }
   }
-
+  async navigateToAddAddress() {
+    await  this.modalCtrl.dismiss(); // Close modal first
+    this.router.navigate(['/add-location']); // Navigate to Add Address page
+  }
   async showToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 5000,
-      position: 'top',
+      duration: 3000,
+      position: 'middle',
     });
     toast.present();
   }
@@ -176,6 +187,31 @@ export class AddressPage implements OnInit {
     this.router.navigate(['/', 'edit-location', addressId], { queryParams: address });
   }
 
+  async confirmDeleteAddress(id: any) {
+    // Step 1: Show confirmation modal
+    const alert = await this.alertController.create({
+      header: 'Confirm Deletion',
+      message: 'Are you sure you want to delete this address?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Deletion canceled');
+          }
+        },
+        {
+          text: 'Delete',
+          role: 'destructive',
+          handler: () => {
+            this.deleteAddress(id);
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
   async deleteAddress(id: any) {
     
     const loading = await this.loadingController.create({
@@ -195,13 +231,20 @@ export class AddressPage implements OnInit {
     try {
       const response: any = await this.apiService.post('deleteaddress', requestData);
       console.log('API Response:', response);
-      this.showToast('Address Deleted.');
+      if(this.addresses.length == 1)
+      {
+        localStorage.setItem('selectedAddressId', "null")
+      }
+      // this.showToast('Address Deleted.');
     } catch (error) {
       console.error('Update Error:', error);
     }
+    await loading.dismiss(); // Hide loading animation
     setTimeout(() => {
       loading.dismiss(); // Hide loading animation
       this.modalCtrl.dismiss(); // Close modal after 2 seconds
-    }, 2000);
+    }, 1000);
+    this.showToast('Address Deleted.');
+    
   }
 }

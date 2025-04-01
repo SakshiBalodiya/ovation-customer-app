@@ -21,7 +21,8 @@ export class CartPage implements OnInit {
   selectedAddress: any;
   addressId: any;
   isDeliveryDisabled: boolean = false;
-
+  isLoading = true;
+  selectedAddressId: any;
   constructor(private modalController: ModalController, private apiService: ApiService, private alertController: AlertController, private loadingController: LoadingController, private toastController: ToastController) {
 
   }
@@ -45,37 +46,55 @@ export class CartPage implements OnInit {
   async ionViewDidEnter() {
     await this.apiService.loadCart();
     this.cart = this.apiService.getCart();
+    
     await this.loadData();
     this.matchCartWithItems();
     this.loadAddress();
     this.checkDeliveryStatus();
   }
   async loadData() {
+    let loading;
+    if (this.cart.length > 0) {
+      this.isLoading = true;
+      console.log("loading")
+       loading = await this.loadingController.create({
+        message: 'Loading...',
+        spinner: 'bubbles', // Use 'circles', 'dots', 'bubbles','crescent' etc.
+        duration: 5000, // Optional: Set a timeout (e.g., 5 seconds)
+      });
+      await loading.present();
+    }
     const data = {
       storeId: this.apiService.storeId,
     };
-    const loading = await this.loadingController.create({
-      message: 'Loading...',
-      spinner: 'bubbles', // Use 'circles', 'dots', 'bubbles','crescent' etc.
-      duration: 5000, // Optional: Set a timeout (e.g., 5 seconds)
-    });
-    await loading.present();
+    
     try {
       const itemsResponse: any = await this.apiService.get('storeitems', data);
-      await loading.dismiss();
+      // await loading.dismiss();
 
       // Ensure response has a 'result' key
       this.items = itemsResponse.result ?? [];
 
       console.log("Store Items:", this.items);
     } catch (error) {
-      await loading.dismiss();
+      // await loading.dismiss();
       console.error('Error fetching Items:', error);
       this.items = [];  // Set to an empty array in case of an error
+    }
+    finally {
+      if (this.isLoading == true && loading) {
+       
+        await loading.dismiss();
+      }
+     
+      this.isLoading = false; // Set loading to false after fetching data
     }
   }
 
   async loadAddress() {
+    this.selectedAddressId = localStorage.getItem('selectedAddressId');
+    console.log(this.selectedAddressId , 'this.selectedAddressId ')
+    
     const data = {
       customerId: localStorage.getItem('customerId'),
       storeId: this.apiService.storeId,

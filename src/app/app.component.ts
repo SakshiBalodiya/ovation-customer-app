@@ -16,10 +16,10 @@ export class AppComponent {
     this.translationService.init();
     this.lockLandscape();
     let user_login = localStorage.getItem('isLoggedIn');
-    // if (user_login === 'true') {
-    //   console.log(user_login);
-    //   this.router.navigate(['tabs/tab1'])
-    // }
+    if (user_login === 'true') {
+      console.log(user_login);
+      this.router.navigate(['tabs/tab1'])
+    }
   }
 
   async lockLandscape() {

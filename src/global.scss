@@ -148,3 +148,16 @@ ion-button {
   ion-header{
     background-color: #fff;
   }
+  ion-input{
+    --highlight-color : none !important;
+    --highlight-color-valid : none !important;
+    --highlight-color-invalid: none !important;
+  }
+  .sc-ion-input-ios-h{
+    --highlight-color : none !important;
+    --highlight-color-valid : none !important;
+    --highlight-color-invalid: none !important;
+  }
+  .has-focus.sc-ion-textarea-md-h textarea.sc-ion-textarea-md {
+    caret-color: none !important;
+}

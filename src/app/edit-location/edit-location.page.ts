@@ -2,7 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OlaMaps } from 'olamaps-web-sdk';
 import { Geolocation } from '@capacitor/geolocation';
-
+import { ApiService } from '../services/api.service';
 @Component({
   selector: 'app-edit-location',
   templateUrl: './edit-location.page.html',
@@ -30,8 +30,9 @@ export class EditLocationPage implements AfterViewInit {
   latitude: any;
   longitude: any;
   id: any;
+  distance: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, public apiService: ApiService) { }
 
   ngOnInit() {
 
@@ -118,6 +119,7 @@ export class EditLocationPage implements AfterViewInit {
       console.log(data.results);
       this.userLat = lat;
       this.userLng = lng;
+      this.editAddress();
       return data.results[0].formatted_address || "Address not found";
     } catch (error) {
       console.error('Error fetching address:', error);
@@ -164,6 +166,7 @@ export class EditLocationPage implements AfterViewInit {
     // Move map and marker to selected place
     this.map.flyTo({ center: [lon, lat], zoom: 16 });
     this.marker.setLngLat([lon, lat]);
+    this.editAddress();
   }
 
   async reset() {
@@ -185,7 +188,24 @@ export class EditLocationPage implements AfterViewInit {
   //     }
   //   );
   // }
+  async editAddress()
+  {
+    
+    try {
+      const data = {
+        origins: `26.893947, 75.822454`,
+        destinations: `${this.userLat},${this.userLng}`,
+        api_key: 'Q6pETlo0Z5nhAeXc0RoR49c0apijP4Q6f5X34TPE',
+      };
 
+      const response: any = await this.apiService.getExternal('distanceMatrix', data);
+      console.log('Ola Matrix API Response:', response);
+      this.distance = response.rows[0]?.elements[0]?.distance || 0;
+      console.log(this.distance);
+    } catch (error) {
+      console.error('Error fetching distance from Ola API:', error);
+    }
+  }
   async locateMe() {
     try {
       const coordinates = await Geolocation.getCurrentPosition({ enableHighAccuracy: true, timeout: 25000 });

@@ -14,11 +14,11 @@ export class ApiService {
   storeId = 1023;
   cart: any[] = [];
   cartData: any;
-  customerId: string | null;
+  customerId: any;
 
 
   constructor(private http: HttpClient, private alertController: AlertController, private router: Router) {
-    this.customerId = localStorage.getItem('customerId');
+
    }
 
   async checkNetwork() {
@@ -96,6 +96,7 @@ export class ApiService {
 
   
   async loadCart() {
+    this.customerId = localStorage.getItem('customerId');
     try {
       const response: any = await this.get('appcart', { storeId: this.storeId, customerId: this.customerId });
       this.cartData = response;
@@ -110,7 +111,7 @@ export class ApiService {
       }
 
       console.log('cart', this.cart);
-      localStorage.setItem('cartDetails', JSON.stringify({ cart: this.cart }));
+      localStorage.setItem('cart', JSON.stringify({ cart: this.cart }));
     } catch (error) {
       console.error('Error loading cart:', error);
     }
@@ -125,7 +126,7 @@ export class ApiService {
   // Function to update the cart in API and localStorage
   async updateCart(cart: any[]) {
     this.cart = cart;
-    localStorage.setItem('cartDetails', JSON.stringify({ cart }));
+    localStorage.setItem('cart', JSON.stringify({ cart }));
 
     const requestData = {
       storeId: this.storeId,

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class OrdersPage implements OnInit {
   selectedSegment: string = 'previous';
   customerId: string | null = localStorage.getItem('customerId');
-  orders: any;
+  orders: any[] = [];
   networkStatus: string = '';
   networkStatusSubscription: Subscription | null = null;
   cartCount: any;

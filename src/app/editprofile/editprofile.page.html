@@ -30,7 +30,7 @@
             <ion-input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" placeholder="Enter your name"
               (ionBlur)="validateName()"></ion-input>
           </div>
-          <p *ngIf="nameError" class="error-text">{{ nameError }}</p>
+          <p *ngIf="nameError" class="error-text err">{{ nameError }}</p>
         </ion-col>
       </ion-row>
     
@@ -42,7 +42,7 @@
             <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Enter your email"
               (ionBlur)="validateEmail()"></ion-input>
           </div>
-          <p *ngIf="emailError" class="error-text">{{ emailError }}</p>
+          <p *ngIf="emailError" class="error-text err">{{ emailError }}</p>
         </ion-col>
       </ion-row>
     
@@ -54,7 +54,7 @@
             <ion-input type="tel" [(ngModel)]="contact" [ngModelOptions]="{standalone: true}" maxlength="10"
               placeholder="Enter your contact number" (ionBlur)="validateContact()"></ion-input>
           </div>
-          <p *ngIf="contactError" class="error-text">{{ contactError }}</p>
+          <p *ngIf="contactError" class="error-text err">{{ contactError }}</p>
         </ion-col>
       </ion-row>
     

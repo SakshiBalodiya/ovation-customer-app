@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EnvService } from '../services/env.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
 
@@ -27,12 +27,18 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  async ngOnInit() {
+    this.router.events.subscribe(async event => {
+      if (event instanceof NavigationEnd && event.url === '/tabs/tab4') {
+        await this.loadUserProfile(); 
+      }
+    });
+  }
 
-  ionViewWillEnter() {
+ async ionViewWillEnter() {
     console.log("Profile page entered");
     this.customerId = localStorage.getItem('customerId');
-    this.loadUserProfile();
+    await this.loadUserProfile();
   }
 
   async loadUserProfile() {
@@ -63,10 +69,24 @@ export class ProfilePage implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('customerId');
+    const cartDetails = localStorage.getItem('cart');
+    const selectedAddressId = localStorage.getItem('selectedAddressId');
+    const currentCustomerId = localStorage.getItem('customerId');
+    
+    // localStorage.removeItem('customerId');
     localStorage.removeItem('customerName');
     localStorage.removeItem('isLoggedIn');
-
+    localStorage.clear();
+    if (currentCustomerId) {
+      localStorage.setItem('previousCustomerId', currentCustomerId);
+    }
+  
+    if (cartDetails) {
+      localStorage.setItem('cart', cartDetails);
+    }
+    if (selectedAddressId) {
+      localStorage.setItem('selectedAddressId', selectedAddressId);
+    }
     this.envService.user_login = 'false';
     this.router.navigate(['/']);
 
