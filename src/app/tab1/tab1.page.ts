@@ -28,22 +28,48 @@ export class Tab1Page {
   addresses: any;
   selectedAddress: any;
   tax: any;
+  selectedAddressId: any;
   
   constructor(private modalController: ModalController, private apiService: ApiService, private router: Router, private http: HttpClient) { 
     this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd && event.url === '/tabs/tab1') {
         this.updateCartCount();
         console.log('Cart count updated via router event:', this.cartCount);
+         this.loadAddress(); 
+       
       }
     });
   }
+ async ngOninit()
+  {
+  
+  }
+  // ionViewWillEnter()
+  // {
+  //   console.log('load address ionViewWillEnter')
+  //   this.loadAddress();
+  //   this.checkAddress();
+  // }
 
   ionViewDidEnter() {
+    console.log('load address ionViewDidEnter')
     this.updateCartCount();
     console.log('Cart count updated on view enter:', this.cartCount);
-    this.loadAddress();
+    // this.loadAddress();
+    // this.checkAddress();
   }
+  // async checkAddress() {
+  //   // Check if selectedAddressId exists in localStorage
+  //   this.selectedAddressId = localStorage.getItem('selectedAddressId');
 
+  //   // If not present, open the address modal
+  //   if (!this.selectedAddressId) {
+  //     await this.address();
+
+  //   } else {
+  //     console.log("Address already selected:", this.selectedAddressId);
+  //   }
+  // }
   async ngOnInit() {
     this.loadCategories();
     this.loadItems();
@@ -97,6 +123,16 @@ export class Tab1Page {
   }
 
   async loadAddress() {
+   
+    this.selectedAddressId = localStorage.getItem('selectedAddressId');
+    console.log(this.selectedAddressId , 'this.selectedAddressId ')
+    if (!this.selectedAddressId) {
+      // If not present, open the address modal
+      console.warn("selectedAddressId is missing or invalid. Opening address modal...");
+      await this.address();
+    } else {
+      console.log("Address already selected:", this.selectedAddressId);
+    }
     const data = {
       customerId: localStorage.getItem('customerId'),
       storeId: this.apiService.storeId,
@@ -107,8 +143,8 @@ export class Tab1Page {
       this.addresses = response.addresses;
 
       // Get selected address ID from localStorage
-      const storedAddressId = localStorage.getItem('selectedAddressId') || 1;
-
+      // const storedAddressId = localStorage.getItem('selectedAddressId') || 1;
+      const storedAddressId = this.selectedAddressId || localStorage.getItem('selectedAddressId') || 1;
       // Find the selected address
       this.selectedAddress = this.addresses.find(
         (address: any) => address.id.toString() === storedAddressId
@@ -130,7 +166,7 @@ export class Tab1Page {
 
     let data = ({
       fcm_token: tokenId,
-      // userId: this.userId,
+      // userId: this.userId, 
       customerId: localStorage.getItem('customerId'),
       storeId: this.apiService.storeId
 

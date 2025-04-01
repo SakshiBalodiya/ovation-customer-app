@@ -95,7 +95,7 @@ export class AddAddressPage implements OnInit {
 
     try {
       const data = {
-        origins: `26.905322,75.749322`,
+        origins: `26.893947, 75.822454`,
         destinations: `${this.latitude},${this.longitude}`,
         api_key: 'Q6pETlo0Z5nhAeXc0RoR49c0apijP4Q6f5X34TPE',
       };
@@ -123,7 +123,14 @@ export class AddAddressPage implements OnInit {
     try {
       const response: any = await this.apiService.post('addaddress', requestData);
       console.log('API Response:', response);
-      this.router.navigate(['tabs/tab1']);
+
+      if (response && response.address && response.address.id) {
+        localStorage.setItem('selectedAddressId', response.address.id.toString());
+        console.log("Selected Address ID stored in localStorage:", response.address.id);
+
+        this.router.navigate(['tabs/tab1']);
+      }
+      
     } catch (error) {
       console.error('API Error:', error);
     }

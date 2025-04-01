@@ -47,13 +47,12 @@ ion-toolbar {
     object-fit: contain;
     margin: 10px auto 10px;
   }
-  
   .favorite-icon {
     position: absolute;
     top: 8px;
     right: 8px;
-    font-size: 20px;
-    color: #888;
+    font-size: 24px;
+    color: var(--ion-color-primary);
     cursor: pointer;
   }
   
@@ -143,15 +142,7 @@ ion-toolbar {
   object-fit: contain;
   margin: 10px auto 10px;
 }
-.favorite-icon {
-  position: absolute;
-  top: 2px;
-  right: 0px;
-  font-size: 20px;
-  color: #888;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
+
 
 // .favorite-icon.active {
 //   color: var(--ion-color-primary);

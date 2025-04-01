@@ -37,10 +37,10 @@ export class LoginPage implements OnInit {
   async login() {
     let user_login = localStorage.getItem('isLoggedIn');
     console.log(user_login);
-    // if (user_login === 'true') {
-    //   console.log(user_login);
-    //   this.router.navigate(['tabs/tab1'])
-    // }
+    if (user_login === 'true') {
+      console.log(user_login);
+      this.router.navigate(['tabs/tab1'])
+    }
     if (!this.email || !this.password) {
       await this.showAlert('Error', 'Please enter both email and password.');
       return;
@@ -69,7 +69,14 @@ export class LoginPage implements OnInit {
 
       if (response && response.customer) {
         const customer = response.customer;
+        const previousCustomerId = localStorage.getItem('previousCustomerId');
+        const currentCustomerId = response.customer.id.toString();
 
+        if (previousCustomerId && previousCustomerId !== currentCustomerId) {
+          localStorage.removeItem('cart'); // Clear cart if IDs don’t match
+          localStorage.removeItem('selectedAddressId');
+          console.log("Customer ID changed. Cart cleared.", currentCustomerId);
+        }
         localStorage.setItem('customerId', customer.id.toString());
         localStorage.setItem('customerName', customer.name);
         localStorage.setItem('isLoggedIn', 'true');

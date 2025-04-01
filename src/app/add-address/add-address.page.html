@@ -65,11 +65,12 @@
           <div>
             <ion-chip class="address_type" [class.active-tab]="addressForm.value.type === 'home'"
               (click)="addressForm.controls['type'].setValue('home')">
-              <ion-icon name="home"></ion-icon> Home
+              <ion-icon name="home" [class.active-tab]="addressForm.value.type === 'home'"  (click)="addressForm.controls['type'].setValue('home')"></ion-icon> Home
             </ion-chip>
             <ion-chip class="address_type" [class.active-tab]="addressForm.value.type === 'work'"
               (click)="addressForm.controls['type'].setValue('work')">
-              <ion-icon name="briefcase"></ion-icon> Work
+              <ion-icon name="briefcase" [class.active-tab]="addressForm.value.type === 'work'"
+              (click)="addressForm.controls['type'].setValue('work')"></ion-icon> Work
             </ion-chip>
           </div>
         </ion-col>

@@ -10,68 +10,8 @@
 </ion-header>
 <ion-content>
 
-  <ion-grid>
-    <!-- <ion-row>
-      <ion-segment  [(ngModel)]="selectedSegment" (ionChange)="setActiveSegment($event)">
-        <ion-segment-button value="previous" class="segment_btn" [ngClass]="{'active-segment': selectedSegment === 'previous'}">
-          <ion-label>Previous</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="upcoming" class="segment_btn" [ngClass]="{'active-segment': selectedSegment === 'upcoming'}">
-          <ion-label>Upcoming</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </ion-row> -->
-
-    
-    <!-- <ion-row>
-      <ion-col class="order">
-        <ion-card [routerLink]="['/order-details']">
-          <ion-row class="order_details border_bottom justify-content-center align-items-center">
-            <ion-col size="auto" class="order_img">
-              <ion-img src="assets/images/item5.png"></ion-img>
-            </ion-col>
-            <ion-col class="order-info">
-              <h1>#298124311</h1>
-              <p>B-177 Nityanand Nagar, Queens's Road, Jaipur - 302021</p>
-              <p>4 items</p>
-            </ion-col>
-           
-          <ion-col>
-            <div class="order_img">
-              <ion-img src="assets/images/item5.png"></ion-img>
-            </div>
-            <ion-label class="order-info">
-              <h1>#298124311</h1>
-              <p>6391 Celina, Del..</p>
-              <p>10 items</p>
-            </ion-label>
-            <div class="order-status pending">
-              <ion-chip>Received</ion-chip>
-            </div>
-          </ion-col>
-          </ion-row>
-          <ion-row class="border_bottom order-date">
-            <ion-col class="ion-text-start">
-              <p>10 Apr 2024 at 07:45 PM</p>
-            </ion-col>
-            <ion-col size="auto" class="ion-text-end price">
-             <p>{{ 'Currency.currency' | translate }}22</p>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col class="order-status pending ion-text-end">
-              <ion-chip>Received</ion-chip>
-            </ion-col>
-          </ion-row>
-          <ion-row class="call">
-            <ion-button color="none">Call</ion-button>
-          </ion-row>
-          
-        </ion-card>
-      </ion-col>
-    </ion-row> -->
-
-
+  <ion-grid  *ngIf="this.orders.length > 0; else emptyOrder">
+   
     <ion-row *ngFor="let order of orders">
       <ion-col class="order">
         <ion-card (click)="openOrder(order.id,order)">
@@ -127,19 +67,28 @@
 
     
   </ion-grid>
+  <ng-template #emptyOrder>
+    <ion-row class="empty-cart-container">
+      <ion-col size="12" class="ion-text-center">
+        <ion-img src="assets/images/empty_wishlist.png" class=" ion-text-center img"></ion-img>
+        <h4>No order available.</h4>
+        <ion-button expand="block" class=" ion-text-center home" [routerLink]="['/tabs/tab1']">Go to Home</ion-button>
+      </ion-col>
+    </ion-row>
+  </ng-template>
 </ion-content>
 <ion-footer *ngIf="cartCount > 0">
   <ion-card class="cart-summary-card" [routerLink]="['/cart']">
     <ion-grid class="cart_grid">
-      <ion-row class="align-center">
+      <ion-row class="align-center" style="display: flex; flex-wrap: nowrap;">
         <ion-col size="auto" class="card_img">
           <img src="assets/images/ovation_icon.png" alt="Product" class="product-image" />
         </ion-col>
-        <ion-col class="ion-text-start">
+        <ion-col  class="ion-text-start">
           <p class="item-count">{{ cartCount }} Items</p>
           <p class="price">{{ 'Currency.currency' | translate }}{{orderTotal + tax  | number:'1.2-2'}}</p>
         </ion-col>
-        <ion-col size="auto" class="view-cart">
+        <ion-col  class="ion-text-end" size="auto" class="view-cart">
           <ion-button fill="clear" class="view-cart-button">
             View Cart
             <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>

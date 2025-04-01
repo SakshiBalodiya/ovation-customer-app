@@ -17,14 +17,14 @@
             <p class="capitalize" style="color: red;">{{ address.distance / 1000 }} km away from store.</p>
           </ion-label>
           <ion-icon name="pencil" slot="end" (click)="editAddress(address.id, address)"></ion-icon>
-          <ion-icon name="trash" class="trash" slot="end" (click)="deleteAddress(address.id)"></ion-icon>
+          <ion-icon name="trash" class="trash" slot="end" (click)="confirmDeleteAddress(address.id)"></ion-icon>
         </ion-item>
       </ion-card>
     </ion-radio-group>
 
     <ion-row class="ion-justify-content-center add_padding">
       <ion-col size="12" class="ion-text-center">
-        <ion-button class="add-address-button" color="none" [routerLink]="['/add-location']">
+        <ion-button class="add-address-button" color="none" (click)="navigateToAddAddress()">
           + Add New Address
         </ion-button>
       </ion-col>

@@ -31,6 +31,7 @@ export class EditprofilePage implements OnInit {
   }
 
   validateName() {
+    this.name = this.name.replace(/[^a-zA-Z\s]/g, '');
     this.nameError = this.name.trim() ? '' : 'Name is required.';
   }
 
@@ -77,17 +78,17 @@ export class EditprofilePage implements OnInit {
 
   async updateProfile() {
     if (!this.name.trim()) {
-      this.showAlert('Error', 'Name is required.');
+      await this.showAlert('Error', 'Name is required.');
       return;
     }
 
     if (!this.isValidEmail(this.email)) {
-      this.showAlert('Error', 'Please enter a valid email address.');
+      await this.showAlert('Error', 'Please enter a valid email address.');
       return;
     }
 
     if (!this.isValidContact(this.contact)) {
-      this.showAlert('Error', 'Please enter a valid 10-digit contact number.');
+      await this.showAlert('Error', 'Please enter a valid 10-digit contact number.');
       return;
     }
 
@@ -104,15 +105,15 @@ export class EditprofilePage implements OnInit {
       console.log('API Response:', response);
 
       if (response && response.message && response.message.toLowerCase().includes('success')) {
-        this.showAlert('Success', response.message, true);
+        await this.showAlert('Success', response.message, true);
       } else {
-        this.showAlert('Error', response.message || 'Profile update failed.');
+        await this.showAlert('Error', response.message || 'Profile update failed.');
       }
     } catch (error) {
       const errorResponse = error as HttpErrorResponse;
       const errorMessage = errorResponse?.error?.message || 'Something went wrong. Please try again.';
       console.error('Update Error:', error);
-      this.showAlert('Error', errorMessage);
+      await this.showAlert('Error', errorMessage);
       this.loadUserProfile();
     }
   }
@@ -144,8 +145,10 @@ export class EditprofilePage implements OnInit {
   // }
 
   async showAlert(header: string, message: string, navigate: boolean = false) {
-    await this.openAlert(header, message);
+    const alert = await this.openAlert(header, message);
+    await alert.onDidDismiss();
 
+  
     if (navigate) {
       this.router.navigate(['/tabs/tab4']);
     }
@@ -156,7 +159,7 @@ export class EditprofilePage implements OnInit {
     const modal = await this.modalController.create({
       component: CustomalertPage,
       cssClass: 'orderPlaced-modal',
-      backdropDismiss: false,
+      backdropDismiss: true,
       componentProps: {
         heading: type,
         msg: msg,
@@ -164,6 +167,7 @@ export class EditprofilePage implements OnInit {
     });
 
     await modal.present();
+    return modal;
 
   }
 }

@@ -102,7 +102,7 @@ export class RegistrationPage implements OnInit {
     const modal = await this.modalController.create({
       component: CustomalertPage,
       cssClass: 'orderPlaced-modal',
-      backdropDismiss: false,
+      backdropDismiss: true,
       componentProps: { heading: type, msg: msg },
     });
     await modal.present();

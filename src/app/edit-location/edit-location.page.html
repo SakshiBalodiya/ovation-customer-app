@@ -50,7 +50,10 @@
     </ion-list>
   </div> -->
   <div style="margin-bottom: 20px;">
-    <ion-button expand="block" color="primary" [routerLink]="['/edit-address']"
+    <p *ngIf="this.distance >= 3000" style="color: red; padding: 0px 12px; text-align: center;">
+      Sorry, this address is too far. Please select an address within 3 km.
+    </p>
+    <ion-button expand="block" color="primary" [routerLink]="['/edit-address']" [disabled]="this.distance >= 3000"
       [queryParams]="{ address2: selectedAddress, lat: userLat, lng: userLng, addressId:id, address, contactNumber, type, id}">
       Update address details <ion-icon name="caret-forward"></ion-icon>
     </ion-button>

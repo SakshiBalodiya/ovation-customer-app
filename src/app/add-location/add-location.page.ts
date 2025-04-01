@@ -2,7 +2,7 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OlaMaps } from 'olamaps-web-sdk';
 import { Geolocation } from '@capacitor/geolocation';
-
+import { ApiService } from '../services/api.service';
 @Component({
   selector: 'app-add-location',
   templateUrl: './add-location.page.html',
@@ -21,8 +21,9 @@ export class AddLocationPage implements OnInit {
   nearbyPlaces: any[] = [];
   apiKey: string = 'Q6pETlo0Z5nhAeXc0RoR49c0apijP4Q6f5X34TPE';
   selectedPlace: any;
+  distance: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, public apiService : ApiService) { }
 
   // async ngAfterViewInit() {
   //   await this.loadMap();
@@ -74,6 +75,7 @@ export class AddLocationPage implements OnInit {
       this.userLng = coordinates.coords.longitude;
       console.log(this.userLat);
       console.log(this.userLng);
+      this.addAddress();
     } catch (error) {
       console.error('Error getting location:', error);
       // const longitude = coordinates.coords.longitude;
@@ -158,7 +160,9 @@ export class AddLocationPage implements OnInit {
       console.log(data.results);
       this.userLat = lat;
       this.userLng = lng;
+      this.addAddress();
       return data.results[0].formatted_address || "Address not found";
+      
     } catch (error) {
       console.error('Error fetching address:', error);
       return "Error retrieving address.";
@@ -204,6 +208,7 @@ export class AddLocationPage implements OnInit {
     // Move map and marker to selected place
     await this.map.jumpTo({ center: [lon, lat], zoom: 16 });
     this.marker.setLngLat([lon, lat]);
+    this.addAddress();
   }
 
   // async loadNearbyPlaces() {
@@ -231,6 +236,24 @@ export class AddLocationPage implements OnInit {
   //     console.error("Error fetching nearby places:", error);
   //   }
   // }
+  async addAddress()
+  {
+    
+    try {
+      const data = {
+        origins: `26.893947, 75.822454`,
+        destinations: `${this.userLat},${this.userLng}`,
+        api_key: 'Q6pETlo0Z5nhAeXc0RoR49c0apijP4Q6f5X34TPE',
+      };
+
+      const response: any = await this.apiService.getExternal('distanceMatrix', data);
+      console.log('Ola Matrix API Response:', response);
+      this.distance = response.rows[0]?.elements[0]?.distance || 0;
+      console.log(this.distance);
+    } catch (error) {
+      console.error('Error fetching distance from Ola API:', error);
+    }
+  }
 
   async locateMe() {
     try {
@@ -241,6 +264,7 @@ export class AddLocationPage implements OnInit {
       this.userLng = coordinates.coords.longitude;
       console.log('locate latitude', this.userLat);
       console.log('locate longitude', this.userLng);
+      this.addAddress();
     } catch (error) {
       console.error('Error getting location:', error);
       // const longitude = coordinates.coords.longitude;

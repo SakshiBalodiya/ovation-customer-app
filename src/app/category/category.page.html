@@ -120,7 +120,7 @@
 <ion-footer *ngIf="cartCount > 0">
   <ion-card class="cart-summary-card" [routerLink]="['/cart']">
     <ion-grid class="cart_grid">
-      <ion-row class="align-center">
+      <ion-row class="align-center" style="display: flex; flex-wrap: nowrap;">
         <ion-col size="auto" class="card_img">
           <img src="assets/images/ovation_icon.png" alt="Product" class="product-image" />
         </ion-col>
